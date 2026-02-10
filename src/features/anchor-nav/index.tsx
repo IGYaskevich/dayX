@@ -6,7 +6,7 @@ export const AnchorNav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="sticky top-4 z-40">
+    <div className=" sticky pb-6 z-40">
       <div className="glass rounded-full px-3 py-2 flex items-center justify-between gap-3">
         <span className="text-xs uppercase tracking-[0.2em] text-sand-600">
           {weddingConfig.labels.navBadge}
