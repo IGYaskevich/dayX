@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { weddingConfig } from "@/shared/config/wedding";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
@@ -11,7 +10,7 @@ import { BackgroundCarousel } from "@/shared/ui/BackgroundCarousel";
 import { cn } from "@/shared/lib/cn";
 
 export const Hero = () => {
-  const [tone, setTone] = useState<"light" | "dark">("dark");
+  const tone = "light";
   const date = formatDate(weddingConfig.eventDate, weddingConfig.locale, {
     day: "numeric",
     month: "long",
@@ -42,7 +41,6 @@ export const Hero = () => {
             transitionMs={carouselConfig?.transitionMs}
             overlayOpacity={carouselConfig?.overlayOpacity}
             zoom={carouselConfig?.zoom}
-            onToneChange={setTone}
           />
         ) : (
           <div
@@ -74,7 +72,7 @@ export const Hero = () => {
               </div>
               <h1
                 className={cn(
-                  "font-display text-4xl md:text-6xl leading-tight text-shadow-soft transition-colors duration-500",
+                  "font-display text-4xl md:text-6xl leading-tight text-shadow-readability transition-colors duration-500",
                   tone === "light" ? "text-ivory-50" : "text-ivory-900"
                 )}
               >
@@ -91,7 +89,7 @@ export const Hero = () => {
               {weddingConfig.heroSubtitle && (
                 <p
                   className={cn(
-                    "text-base md:text-lg max-w-xl text-shadow-soft transition-colors duration-500",
+                    "text-base md:text-lg max-w-xl text-shadow-readability transition-colors duration-500",
                     tone === "light" ? "text-ivory-50" : "text-ivory-900"
                   )}
                 >
@@ -113,7 +111,7 @@ export const Hero = () => {
                 </a>
               </div>
               {weddingConfig.heroNote && (
-                <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-soft">
+                <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
                   {weddingConfig.heroNote}
                 </p>
               )}
@@ -125,7 +123,7 @@ export const Hero = () => {
         <div className="mx-auto w-full max-w-[460px] rounded-3xl border border-white/15 bg-black/45 backdrop-blur-md px-4 py-3 shadow-soft">
           <div className="flex flex-col gap-2 items-center text-center">
             {weddingConfig.heroNote && (
-              <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-soft">
+              <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
                 {weddingConfig.heroNote}
               </p>
             )}
