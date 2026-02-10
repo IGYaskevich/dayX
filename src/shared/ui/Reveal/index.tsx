@@ -1,9 +1,9 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLMotionProps } from "framer-motion";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/shared/lib/cn";
 
-type Props = HTMLAttributes<HTMLDivElement>;
+type Props = HTMLMotionProps<"div">;
 
 export const Reveal = ({ className, children, ...props }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
