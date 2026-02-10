@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-hero-glow text-sand-900 font-body antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.section-grid {
+  @apply grid gap-6 md:gap-8;
+}
+
+.glass {
+  @apply bg-white/55 backdrop-blur-xl border border-white/60 shadow-card;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(120deg, #8a4665, #7266f0, #c86c93);
+}
+
+.parallax-layer {
+  will-change: transform;
+}

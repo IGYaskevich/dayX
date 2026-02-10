@@ -1,0 +1,20 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#fdf7fb"/>
+  <circle cx="280" cy="180" r="220" fill="url(#paint0_radial)" fill-opacity="0.7"/>
+  <circle cx="1180" cy="220" r="260" fill="url(#paint1_radial)" fill-opacity="0.65"/>
+  <circle cx="880" cy="700" r="320" fill="url(#paint2_radial)" fill-opacity="0.55"/>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(280 180) rotate(90) scale(220)">
+      <stop stop-color="#f6cddc"/>
+      <stop offset="1" stop-color="#fdf7fb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1180 220) rotate(90) scale(260)">
+      <stop stop-color="#cdd7ff"/>
+      <stop offset="1" stop-color="#fdf7fb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="paint2_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(880 700) rotate(90) scale(320)">
+      <stop stop-color="#f2e6f5"/>
+      <stop offset="1" stop-color="#fdf7fb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
