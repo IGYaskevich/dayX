@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/shared/lib/cn";
 
@@ -14,7 +14,6 @@ type Props = {
   transitionMs?: number;
   overlayOpacity?: number;
   zoom?: boolean;
-  onToneChange?: (tone: "light" | "dark") => void;
   className?: string;
 };
 
@@ -25,7 +24,6 @@ export const BackgroundCarousel = ({
   transitionMs = 1200,
   overlayOpacity = 0.3,
   zoom = true,
-  onToneChange,
   className,
 }: Props) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -37,6 +35,7 @@ export const BackgroundCarousel = ({
   const activeImages =
     isMobile && safeMobileImages.length > 0 ? safeMobileImages : safeImages;
   const [index, setIndex] = useState(0);
+  const preloadedRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     if (activeImages.length <= 1) return;
@@ -54,51 +53,31 @@ export const BackgroundCarousel = ({
     return () => media.removeEventListener?.("change", update);
   }, []);
 
+  useEffect(() => {
+    const allImages = [...safeImages, ...safeMobileImages];
+    if (allImages.length === 0) return;
+
+    const preload = () => {
+      allImages.forEach((item) => {
+        if (!item.url || preloadedRef.current.has(item.url)) return;
+        const img = new Image();
+        img.src = item.url;
+        preloadedRef.current.add(item.url);
+      });
+    };
+
+    const idle = (globalThis as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number })
+      .requestIdleCallback;
+    if (typeof idle === "function") {
+      idle(preload, { timeout: 1500 });
+    } else {
+      globalThis.setTimeout(preload, 0);
+    }
+  }, [safeImages, safeMobileImages]);
+
   if (activeImages.length === 0) return null;
 
   const active = activeImages[index % activeImages.length];
-  const darkOverlayAlpha = 0.3;
-  const gradientDarken = overlayOpacity * 0.25;
-  const threshold = 140;
-
-  useEffect(() => {
-    if (!active?.url || !onToneChange) return;
-    let cancelled = false;
-    const image = new Image();
-    image.decoding = "async";
-    image.src = active.url;
-    image.onload = () => {
-      if (cancelled) return;
-      const canvas = document.createElement("canvas");
-      const size = 24;
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext("2d", { willReadFrequently: true });
-      if (!ctx) {
-        onToneChange("dark");
-        return;
-      }
-      ctx.drawImage(image, 0, 0, size, size);
-      const { data } = ctx.getImageData(0, 0, size, size);
-      let total = 0;
-      for (let i = 0; i < data.length; i += 4) {
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-        total += 0.2126 * r + 0.7152 * g + 0.0722 * b;
-      }
-      const avg = total / (data.length / 4);
-      const adjusted = avg * (1 - darkOverlayAlpha - gradientDarken);
-      onToneChange(adjusted < threshold ? "light" : "dark");
-    };
-    image.onerror = () => {
-      if (!cancelled) onToneChange("dark");
-    };
-    return () => {
-      cancelled = true;
-    };
-  }, [active?.url, onToneChange, darkOverlayAlpha, gradientDarken]);
-
   return (
     <div className={cn("absolute inset-0 overflow-hidden", className)}>
       <AnimatePresence initial={false} mode="sync">
