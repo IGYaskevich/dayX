@@ -17,23 +17,23 @@ export const EventInfo = ({ id }: { id: string }) => {
       <Reveal>
         <div className="section-grid md:grid-cols-3">
           <Card>
-            <p className="text-xs uppercase tracking-[0.2em] text-sand-500">
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-600">
               {weddingConfig.labels.dateLabel}
             </p>
-            <p className="mt-3 text-xl font-display text-sand-900">{date}</p>
-            <p className="mt-2 text-sm text-sand-600 capitalize">{weekday}</p>
+            <p className="mt-3 text-xl font-display text-ivory-900">{date}</p>
+            <p className="mt-2 text-sm text-ivory-700 capitalize">{weekday}</p>
           </Card>
           <Card>
-            <p className="text-xs uppercase tracking-[0.2em] text-sand-500">
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-600">
               {weddingConfig.labels.timeLabel}
             </p>
-            <p className="mt-3 text-xl font-display text-sand-900">{weddingConfig.startTime}</p>
+            <p className="mt-3 text-xl font-display text-ivory-900">{weddingConfig.startTime}</p>
           </Card>
           <Card>
-            <p className="text-xs uppercase tracking-[0.2em] text-sand-500">
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-600">
               {weddingConfig.labels.formatLabel}
             </p>
-            <p className="mt-3 text-base text-sand-700">{weddingConfig.eventFormat}</p>
+            <p className="mt-3 text-base text-ivory-800">{weddingConfig.eventFormat}</p>
           </Card>
         </div>
       </Reveal>

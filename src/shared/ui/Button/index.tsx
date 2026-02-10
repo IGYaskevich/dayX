@@ -15,10 +15,10 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-sand-900 text-white shadow-soft hover:shadow-card hover:-translate-y-0.5 active:translate-y-0",
+    "bg-ivory-900 text-ivory-50 shadow-soft hover:shadow-card hover:-translate-y-0.5 active:translate-y-0",
   secondary:
-    "bg-white/70 text-sand-900 border border-white/80 hover:bg-white/90",
-  ghost: "text-sand-800 hover:bg-white/50",
+    "bg-ivory-50/80 text-ivory-900 border border-ivory-200/80 hover:bg-ivory-50",
+  ghost: "text-ivory-900 hover:bg-ivory-100/60",
 };
 
 const sizes: Record<Size, string> = {

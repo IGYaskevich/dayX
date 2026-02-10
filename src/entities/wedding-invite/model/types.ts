@@ -88,6 +88,10 @@ export type WeddingInviteConfig = {
   faq: FaqItem[];
   contacts: ContactItem[];
   photos?: PhotoItem[];
+  photoSize?: {
+    width: number;
+    height: number;
+  };
   backgrounds: {
     page: string;
     hero: string;

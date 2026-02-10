@@ -8,7 +8,7 @@ export const DresscodeSection = ({ id }: { id: string }) => {
     <Section id={id} title={weddingConfig.labels.dresscodeTitle}>
       <Reveal>
         <Card className="space-y-4">
-          <p className="text-sm text-sand-700">{weddingConfig.dresscodeText}</p>
+          <p className="text-sm text-ivory-800">{weddingConfig.dresscodeText}</p>
           <div className="flex flex-wrap gap-3">
             {weddingConfig.dresscodePalette.map((color) => (
               <span

@@ -11,7 +11,7 @@
 }
 
 body {
-  @apply bg-hero-glow text-sand-900 font-body antialiased;
+  @apply bg-hero-glow text-ivory-900 font-body antialiased;
 }
 
 #root {
@@ -29,7 +29,11 @@ body {
 
 .text-gradient {
   @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(120deg, #8a4665, #7266f0, #c86c93);
+  background-image: linear-gradient(120deg, #2B2B2B, #C7B28A, #2B2B2B);
+}
+
+.text-shadow-soft {
+  text-shadow: 0 10px 30px rgba(43, 43, 43, 0.18);
 }
 
 .animated-gradient {

@@ -42,7 +42,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
           <div
             key={message.id}
             className={cn(
-              "glass rounded-2xl px-4 py-3 text-sm text-sand-800 shadow-soft animate-fadeUp"
+              "glass rounded-2xl px-4 py-3 text-sm text-ivory-900 shadow-soft animate-fadeUp border border-ivory-200/70"
             )}
           >
             {message.title}

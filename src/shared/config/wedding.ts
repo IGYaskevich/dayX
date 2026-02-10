@@ -74,6 +74,10 @@ export const weddingConfig: WeddingInviteConfig = {
       alt: "Абстрактная цветочная композиция",
     },
   ],
+  photoSize: {
+    width: 176,
+    height: 176,
+  },
   backgrounds: {
     page: pageBg,
     hero: heroBg,
