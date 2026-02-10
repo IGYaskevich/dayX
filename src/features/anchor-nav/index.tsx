@@ -6,9 +6,9 @@ export const AnchorNav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="sticky pb-6 z-40">
+    <div className="sticky top-4 pb-6 z-40">
       <div className="glass rounded-full px-3 py-2 flex items-center justify-between gap-3 border border-ivory-200/80">
-        <span className="text-xs uppercase tracking-[0.2em] text-ivory-800">
+        <span className="text-xs uppercase tracking-[0.2em] text-ivory-900">
           {weddingConfig.labels.navBadge}
         </span>
         <div className="hidden md:flex items-center gap-4">
@@ -16,7 +16,7 @@ export const AnchorNav = () => {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="text-sm text-ivory-800 hover:text-ivory-900"
+              className="text-sm text-ivory-900 hover:text-ivory-900"
             >
               {item.label}
             </a>
@@ -35,7 +35,7 @@ export const AnchorNav = () => {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="text-sm text-ivory-800"
+                className="text-sm text-ivory-900"
                 onClick={() => setOpen(false)}
               >
                 {item.label}

@@ -27,6 +27,23 @@ export type PhotoItem = {
   alt: string;
 };
 
+export type HeroMedia = {
+  type: "image" | "video";
+  url: string;
+  alt?: string;
+  poster?: string;
+};
+
+export type BackgroundCarouselConfig = {
+  enabled: boolean;
+  images: PhotoItem[];
+  mobileImages?: PhotoItem[];
+  intervalMs?: number;
+  transitionMs?: number;
+  overlayOpacity?: number;
+  zoom?: boolean;
+};
+
 export type NavItem = {
   id: string;
   label: string;
@@ -92,6 +109,8 @@ export type WeddingInviteConfig = {
     width: number;
     height: number;
   };
+  heroMedia?: HeroMedia;
+  backgroundCarousel?: BackgroundCarouselConfig;
   backgrounds: {
     page: string;
     hero: string;
