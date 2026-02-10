@@ -24,25 +24,43 @@ body {
 }
 
 .glass {
-  @apply bg-white/55 backdrop-blur-xl border border-white/60 shadow-card;
+  @apply bg-ivory-50/70 backdrop-blur-xl border border-ivory-200/70 shadow-card;
 }
 
 .text-gradient {
   @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(120deg, #2B2B2B, #C7B28A, #2B2B2B);
+  background-image: linear-gradient(120deg, #2E2B27, #B8B2AB, #2E2B27);
 }
 
 .text-shadow-soft {
-  text-shadow: 0 10px 30px rgba(43, 43, 43, 0.18);
+  text-shadow: 0 10px 30px rgba(46, 43, 39, 0.2);
+}
+
+.text-shadow-readability {
+  text-shadow: 0 8px 24px rgba(46, 43, 39, 0.35);
+}
+
+.date-outline {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(120deg, #2E2B27, #B8B2AB, #2E2B27);
+  -webkit-text-stroke: 1px rgba(184, 178, 171, 0.55);
+  text-shadow: 0 8px 24px rgba(46, 43, 39, 0.22);
+}
+
+.date-outline-light {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(120deg, #FFFFFF, #E7E1DA, #FFFFFF);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 }
 
 .animated-gradient {
   background: linear-gradient(
     120deg,
-    rgba(246, 205, 220, 0.35),
-    rgba(205, 215, 255, 0.35),
-    rgba(242, 230, 245, 0.35),
-    rgba(245, 239, 230, 0.35)
+    rgba(246, 243, 239, 0.45),
+    rgba(231, 225, 218, 0.4),
+    rgba(184, 178, 171, 0.28),
+    rgba(231, 225, 218, 0.35)
   );
   background-size: 220% 220%;
   animation: gradient-shift 18s ease-in-out infinite;

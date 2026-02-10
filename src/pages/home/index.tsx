@@ -1,14 +1,14 @@
-import {weddingConfig} from "@/shared/config/wedding";
-import {Container} from "@/shared/ui/Container";
-import {Hero} from "@/widgets/hero";
-import {EventInfo} from "@/widgets/event-info";
-import {LocationSection} from "@/widgets/location";
-import {ScheduleSection} from "@/widgets/schedule";
-import {DresscodeSection} from "@/widgets/dresscode";
-import {WishesSection} from "@/widgets/wishes";
-import {FaqSection} from "@/widgets/faq";
-import {ContactsSection} from "@/widgets/contacts";
-import {AnimatedBackground} from "@/shared/ui/AnimatedBackground";
+import { weddingConfig } from "@/shared/config/wedding";
+import { Container } from "@/shared/ui/Container";
+import { Hero } from "@/widgets/hero";
+import { EventInfo } from "@/widgets/event-info";
+import { LocationSection } from "@/widgets/location";
+import { ScheduleSection } from "@/widgets/schedule";
+import { DresscodeSection } from "@/widgets/dresscode";
+import { WishesSection } from "@/widgets/wishes";
+import { FaqSection } from "@/widgets/faq";
+import { ContactsSection } from "@/widgets/contacts";
+import { AnimatedBackground } from "@/shared/ui/AnimatedBackground";
 
 export const HomePage = () => {
   return (

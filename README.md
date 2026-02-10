@@ -19,6 +19,8 @@
 - `dresscodeText`, `dresscodePalette`
 - `schedule`, `wishes`, `faq`, `contacts`
 - `photos` (опционально)
+- `heroMedia` (опционально: `image` или `video` для главного экрана)
+- `backgroundCarousel` (опционально: плавная смена фоновых фото на первом экране)
 - `backgrounds` (фоновые изображения страницы и Hero)
 - `sections` (id секций для якорей)
 - `nav` (тексты и порядок пунктов навигации)

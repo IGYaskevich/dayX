@@ -26,11 +26,11 @@ export const Accordion = ({ items }: Props) => {
               type="button"
             >
               <span className="font-medium">{item.title}</span>
-              <span className="text-gold-600">{isOpen ? "−" : "+"}</span>
+              <span className="text-ivory-600">{isOpen ? "−" : "+"}</span>
             </button>
             <div
               className={cn(
-                "px-5 pb-4 text-sm text-ivory-800 transition-all",
+                "px-5 pb-4 text-sm text-ivory-900 transition-all",
                 isOpen ? "block" : "hidden"
               )}
             >

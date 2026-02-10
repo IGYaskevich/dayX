@@ -11,11 +11,11 @@ export const LocationSection = ({ id }: { id: string }) => {
       <Reveal>
         <Card className="section-grid md:grid-cols-[1.2fr_0.8fr] items-center">
           <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-gold-600">
+            <p className="text-xs uppercase tracking-[0.2em] text-ivory-600">
               {weddingConfig.labels.venueLabel}
             </p>
             <p className="text-2xl font-display text-ivory-900">{weddingConfig.venueName}</p>
-            <p className="text-sm text-ivory-700">
+            <p className="text-sm text-ivory-900">
               {weddingConfig.labels.addressLabel}: {weddingConfig.venueAddress}
             </p>
           </div>

@@ -1,10 +1,36 @@
 import type { WeddingInviteConfig } from "@/entities/wedding-invite/model/types";
 import heroBg from "@/shared/assets/hero-bg.svg";
 import pageBg from "@/shared/assets/page-bg.svg";
+import heroPhoto from "@/shared/assets/photo_16x9.jpg";
+import bg01 from "@/shared/assets/x-day/bg/234D8749-34E8-4570-90B2-DE5909CE94E0.jpg";
+import bg02 from "@/shared/assets/x-day/bg/236BBACD-0906-4321-B3FE-A884648211CE.jpg";
+import bg03 from "@/shared/assets/x-day/bg/420B36A1-B09D-4CD3-BBD2-2B030252CBA6.jpg";
+import bg04 from "@/shared/assets/x-day/bg/4D21A63C-0169-42FE-8BA2-ED7BDEA07D72.jpg";
+import bg05 from "@/shared/assets/x-day/bg/59FC10F9-F878-4C55-82C1-4FA00EF2C5F4.jpg";
+import bg06 from "@/shared/assets/x-day/bg/6344CD1D-E147-494E-9554-96AE6B648755.jpg";
+import bg07 from "@/shared/assets/x-day/bg/B2642C96-62C5-4BEB-8A57-52117AF94F4C.jpg";
+import bg08 from "@/shared/assets/x-day/bg/C62025A2-308E-457B-B09C-00EF6F7ECC57.jpg";
+import bg09 from "@/shared/assets/x-day/bg/C7B51E56-D323-42B9-AD19-3DECF3A7F0A2.jpg";
+import bg10 from "@/shared/assets/x-day/bg/CF708314-5DAB-44A9-ADD8-D839D4C0AA5F.jpg";
+import bg11 from "@/shared/assets/x-day/bg/D4A37102-6EA7-4143-B5AB-3F58CA6C95D9.jpg";
+import bg12 from "@/shared/assets/x-day/bg/FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6.jpg";
+import mb01 from "@/shared/assets/x-day/mobile-bg/234D8749-34E8-4570-90B2-DE5909CE94E0.jpg";
+import mb02 from "@/shared/assets/x-day/mobile-bg/236BBACD-0906-4321-B3FE-A884648211CE.jpg";
+import mb03 from "@/shared/assets/x-day/mobile-bg/420B36A1-B09D-4CD3-BBD2-2B030252CBA6.jpg";
+import mb04 from "@/shared/assets/x-day/mobile-bg/4D21A63C-0169-42FE-8BA2-ED7BDEA07D72.jpg";
+import mb05 from "@/shared/assets/x-day/mobile-bg/59FC10F9-F878-4C55-82C1-4FA00EF2C5F4.jpg";
+import mb06 from "@/shared/assets/x-day/mobile-bg/6344CD1D-E147-494E-9554-96AE6B648755.jpg";
+import mb07 from "@/shared/assets/x-day/mobile-bg/B1D51EB2-D2BB-490A-AA95-C1D7EF8C3B65.jpg";
+import mb08 from "@/shared/assets/x-day/mobile-bg/B2642C96-62C5-4BEB-8A57-52117AF94F4C.jpg";
+import mb09 from "@/shared/assets/x-day/mobile-bg/C62025A2-308E-457B-B09C-00EF6F7ECC57.jpg";
+import mb10 from "@/shared/assets/x-day/mobile-bg/C7B51E56-D323-42B9-AD19-3DECF3A7F0A2.jpg";
+import mb11 from "@/shared/assets/x-day/mobile-bg/CF708314-5DAB-44A9-ADD8-D839D4C0AA5F.jpg";
+import mb12 from "@/shared/assets/x-day/mobile-bg/D4A37102-6EA7-4143-B5AB-3F58CA6C95D9.jpg";
+import mb13 from "@/shared/assets/x-day/mobile-bg/FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6.jpg";
 
 export const weddingConfig: WeddingInviteConfig = {
   locale: "ru-RU",
-  coupleNames: "Имя невесты & Имя жениха",
+  coupleNames: "Игнат & Лейла",
   heroSubtitle: "Мы будем счастливы разделить с вами наш особенный день",
   heroNote: "Пожалуйста, подтвердите присутствие до 10 июня",
   eventDate: "2026-07-18",
@@ -70,13 +96,62 @@ export const weddingConfig: WeddingInviteConfig = {
   ],
   photos: [
     {
-      url: "https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1200&q=80",
-      alt: "Абстрактная цветочная композиция",
+      url: heroPhoto,
+      alt: "Фотография пары",
+    },
+    {
+      url: heroPhoto,
+      alt: "Тёплый момент вместе",
+    },
+    {
+      url: heroPhoto,
+      alt: "Светлое настроение свадьбы",
     },
   ],
   photoSize: {
     width: 176,
     height: 176,
+  },
+  heroMedia: {
+    type: "image",
+    url: heroPhoto,
+    alt: "Главная фотография пары",
+  },
+  backgroundCarousel: {
+    enabled: true,
+    images: [
+      { url: bg01, alt: "Фон — момент 1" },
+      { url: bg02, alt: "Фон — момент 2" },
+      { url: bg03, alt: "Фон — момент 3" },
+      { url: bg04, alt: "Фон — момент 4" },
+      { url: bg05, alt: "Фон — момент 5" },
+      { url: bg06, alt: "Фон — момент 6" },
+      { url: bg07, alt: "Фон — момент 7" },
+      { url: bg08, alt: "Фон — момент 8" },
+      { url: bg09, alt: "Фон — момент 9" },
+      { url: bg10, alt: "Фон — момент 10" },
+      { url: bg11, alt: "Фон — момент 11" },
+      { url: bg12, alt: "Фон — момент 12" },
+    ],
+    mobileImages: [
+      { url: mb01, alt: "Фон — момент 1" },
+      { url: mb02, alt: "Фон — момент 2" },
+      { url: mb03, alt: "Фон — момент 3" },
+      { url: mb04, alt: "Фон — момент 4" },
+      { url: mb05, alt: "Фон — момент 5" },
+      { url: mb06, alt: "Фон — момент 6" },
+      { url: mb07, alt: "Фон — момент 7" },
+      { url: mb08, alt: "Фон — момент 8" },
+      { url: mb09, alt: "Фон — момент 9" },
+      { url: mb10, alt: "Фон — момент 10" },
+      { url: mb11, alt: "Фон — момент 11" },
+      { url: mb12, alt: "Фон — момент 12" },
+      { url: mb13, alt: "Фон — момент 13" },
+    ],
+    intervalMs: 6000,
+    transitionMs: 1400,
+    overlayOpacity: 0.5,
+    zoom: true,
   },
   backgrounds: {
     page: pageBg,

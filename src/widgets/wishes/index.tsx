@@ -11,7 +11,7 @@ export const WishesSection = ({ id }: { id: string }) => {
           {weddingConfig.wishes.map((item) => (
             <Card key={item.title}>
               <p className="text-base font-medium text-ivory-900">{item.title}</p>
-              <p className="text-sm text-ivory-700 mt-2">{item.text}</p>
+              <p className="text-sm text-ivory-900 mt-2">{item.text}</p>
             </Card>
           ))}
         </div>
