@@ -9,6 +9,7 @@ import { Reveal } from "@/shared/ui/Reveal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BackgroundCarousel } from "@/shared/ui/BackgroundCarousel";
 import { cn } from "@/shared/lib/cn";
+import { HandwriteTitle } from "@/shared/ui/HandwriteTitle";
 
 export const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -89,27 +90,10 @@ export const Hero = () => {
         <div className="grid gap-10 items-start min-h-[calc(100svh-6rem)]">
           <Reveal>
             <div className="space-y-6 max-w-xl md:max-w-2xl">
-              <div
-                className={cn(
-                  "inline-flex items-center rounded-full border px-4 py-1 text-xs uppercase tracking-[0.22em] transition-colors duration-500",
-                  tone === "light"
-                    ? "border-white/40 bg-black/30 text-ivory-50"
-                    : "border-ivory-200/80 bg-ivory-50/80 text-ivory-900"
-                )}
-              >
-                {weddingConfig.labels.heroBadge}
-              </div>
-              <h1
-                className={cn(
-                  "font-display text-4xl md:text-6xl leading-tight text-shadow-readability transition-colors duration-500",
-                  tone === "light" ? "text-ivory-50" : "text-ivory-900"
-                )}
-              >
-                {weddingConfig.coupleNames}
-              </h1>
+              <HandwriteTitle text={weddingConfig.coupleNames} tone={tone} />
               <p
                 className={cn(
-                  "text-2xl md:text-3xl font-display transition-colors duration-500",
+                  "hero-write-reveal text-2xl md:text-3xl font-display transition-colors duration-500",
                   tone === "light" ? "date-outline-light" : "date-outline"
                 )}
               >
@@ -118,13 +102,23 @@ export const Hero = () => {
               {weddingConfig.heroSubtitle && (
                 <p
                   className={cn(
-                    "text-base md:text-lg max-w-xl text-shadow-readability transition-colors duration-500",
+                    "hero-write-reveal font-display text-xl md:text-2xl max-w-xxl leading-snug text-shadow-readability transition-colors duration-500",
                     tone === "light" ? "text-ivory-50" : "text-ivory-900"
                   )}
                 >
                   {weddingConfig.heroSubtitle}
                 </p>
               )}
+              <div
+                className={cn(
+                  "hero-write-reveal inline-flex items-center rounded-full border px-4 py-1 text-xs uppercase tracking-[0.22em] transition-colors duration-500",
+                  tone === "light"
+                    ? "border-white/40 bg-black/30 text-ivory-50"
+                    : "border-ivory-200/80 bg-ivory-50/80 text-ivory-900"
+                )}
+              >
+                {weddingConfig.labels.heroBadge}
+              </div>
             </div>
           </Reveal>
         </div>

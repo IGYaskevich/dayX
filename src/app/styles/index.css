@@ -75,6 +75,73 @@ body {
   will-change: transform;
 }
 
+@keyframes handwrite-stroke {
+  0% {
+    stroke-dasharray: 0 1000;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 1000 0;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes handwrite-fill {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero-handwrite-stroke {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  stroke-dasharray: 0 1000;
+  stroke-dashoffset: 0;
+  animation: handwrite-stroke 0.7s ease-out forwards;
+}
+
+.hero-handwrite-fill {
+  opacity: 0;
+  animation: handwrite-fill 0.35s ease forwards;
+  animation-delay: 0.35s;
+}
+
+@keyframes hero-write-reveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+.hero-write-reveal {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: hero-write-reveal 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-handwrite-stroke,
+  .hero-handwrite-fill,
+  .hero-write-reveal {
+    animation: none;
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
 @keyframes gradient-shift {
   0% {
     background-position: 0% 50%;
