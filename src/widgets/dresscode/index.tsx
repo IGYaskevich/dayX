@@ -1,16 +1,12 @@
-import { useMemo } from "react";
 import { weddingConfig } from "@/shared/config/wedding";
 import { Section } from "@/shared/ui/Section";
 import { Card } from "@/shared/ui/Card";
 import { Reveal } from "@/shared/ui/Reveal";
+import { cn } from "@/shared/lib/cn";
 
 export const DresscodeSection = ({ id }: { id: string }) => {
-  const examples = weddingConfig.dresscodeExamples ?? [];
+  const examples = (weddingConfig.dresscodeExamples ?? []).slice(0, 6);
   const hasExamples = examples.length > 0;
-  const loopedExamples = useMemo(
-    () => (examples.length > 1 ? [...examples, ...examples] : examples),
-    [examples]
-  );
 
   return (
     <Section id={id} title={weddingConfig.labels.dresscodeTitle}>
@@ -35,24 +31,24 @@ export const DresscodeSection = ({ id }: { id: string }) => {
             </p>
           )}
           {hasExamples && (
-            <div className="dresscode-marquee ">
-              <div className="dresscode-marquee-track">
-                {loopedExamples.map((image, index) => (
-                  <figure
-                    key={`${image.url}-${index}`}
-                    className={`dresscode-feed-tile ${
-                      index % 3 === 0 ? "dresscode-feed-tile-wide" : "dresscode-feed-tile-narrow"
-                    }`}
-                  >
-                    <img
-                      src={image.url}
-                      alt={image.alt}
-                      className="h-full w-full object-cover block"
-                      loading="lazy"
-                    />
-                  </figure>
-                ))}
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+              {examples.map((image, index) => (
+                <figure
+                  key={image.url}
+                  className={cn(
+                    "rounded-3xl overflow-hidden border border-ivory-300/80 bg-ivory-100 shadow-soft",
+                    "aspect-[3/4]",
+                    (index === 1 || index === 4) && "md:translate-y-4"
+                  )}
+                >
+                  <img
+                    src={image.url}
+                    alt={image.alt}
+                    className="h-full w-full object-cover block transition-transform duration-500 hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </figure>
+              ))}
             </div>
           )}
           {weddingConfig.labels.dresscodeCarouselHint && (

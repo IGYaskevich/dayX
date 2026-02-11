@@ -304,7 +304,7 @@ export const weddingConfig: WeddingInviteConfig = {
     menuClose: "Закрыть",
     writeCta: "Написать в",
     scheduleNote: "План нашего дня",
-    dresscodeHint: "Для вдохновения мы собрали немного картинок-примеров, листайте вправо",
-    dresscodeCarouselHint: "листайте вправо",
+    dresscodeHint: "Для вдохновения мы собрали несколько примеров образов.",
+    dresscodeCarouselHint: "Референсы дресс-кода",
   },
 };

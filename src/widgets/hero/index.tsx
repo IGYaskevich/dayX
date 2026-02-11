@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
-import { weddingConfig } from "@/shared/config/wedding";
-import { Container } from "@/shared/ui/Container";
-import { Button } from "@/shared/ui/Button";
-import { RsvpLink } from "@/features/rsvp-link";
-import { AnchorNav } from "@/features/anchor-nav";
-import { formatDate } from "@/shared/lib/date";
-import { Reveal } from "@/shared/ui/Reveal";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { BackgroundCarousel } from "@/shared/ui/BackgroundCarousel";
-import { cn } from "@/shared/lib/cn";
-import { HandwriteTitle } from "@/shared/ui/HandwriteTitle";
+import {useEffect, useState} from "react";
+import {weddingConfig} from "@/shared/config/wedding";
+import {Container} from "@/shared/ui/Container";
+import {Button} from "@/shared/ui/Button";
+import {RsvpLink} from "@/features/rsvp-link";
+import {AnchorNav} from "@/features/anchor-nav";
+import {formatDate} from "@/shared/lib/date";
+import {Reveal} from "@/shared/ui/Reveal";
+import {motion, useScroll, useTransform} from "framer-motion";
+import {BackgroundCarousel} from "@/shared/ui/BackgroundCarousel";
+import {cn} from "@/shared/lib/cn";
+import {HandwriteTitle} from "@/shared/ui/HandwriteTitle";
+import playIcon from "@/shared/assets/play-button.png";
+import stopIcon from "@/shared/assets/stop.png";
 
 export const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showMobileFloatingCta, setShowMobileFloatingCta] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const tone = "light";
   const date = formatDate(weddingConfig.eventDate, weddingConfig.locale, {
     day: "numeric",
@@ -58,6 +61,25 @@ export const Hero = () => {
       window.removeEventListener("resize", onScroll);
     };
   }, [isMobile]);
+
+  useEffect(() => {
+    const onAudioState = (event: Event) => {
+      const detail = (event as CustomEvent<{ isPlaying: boolean }>).detail;
+      if (!detail) return;
+      setIsMusicPlaying(Boolean(detail.isPlaying));
+    };
+
+    window.addEventListener("wedding-audio-state", onAudioState as EventListener);
+    window.dispatchEvent(new CustomEvent("wedding-audio-request-state"));
+
+    return () => {
+      window.removeEventListener("wedding-audio-state", onAudioState as EventListener);
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    window.dispatchEvent(new CustomEvent("wedding-audio-toggle"));
+  };
 
   return (
     <section
@@ -166,7 +188,16 @@ export const Hero = () => {
                   {weddingConfig.heroNote}
                 </p>
               )}
-              <RsvpLink className="w-full" />
+              <div className="flex w-full items-center gap-2">
+                <RsvpLink className="w-full" />
+                    <img
+                        onClick={toggleMusic}
+                        src={isMusicPlaying ? stopIcon : playIcon}
+                        alt=""
+                        aria-hidden="true"
+                        className="h-10 object-contain z-40"
+                    />
+              </div>
             </div>
           </div>
         </div>
