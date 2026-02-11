@@ -65,6 +65,11 @@ const cloudMobileIds: CloudinaryImageRef[] = [
 
 const cloudDesktop = buildCldImages(cld, cloudDesktopIds, { width: 1920, height: 1080 });
 const cloudMobile = buildCldImages(cld, cloudMobileIds, { width: 1080, height: 1620 });
+const cloudVenuePhoto = buildCldImages(
+  cld,
+  [{ id: "IMG_2668_atcncl", alt: "Локация МегаДача" }],
+  { width: 1600, height: 1200 }
+)[0];
 
 export const weddingConfig: WeddingInviteConfig = {
   locale: "ru-RU",
@@ -72,35 +77,47 @@ export const weddingConfig: WeddingInviteConfig = {
   heroSubtitle: "Мы будем счастливы разделить с вами наш особенный день",
   heroNote: "Пожалуйста, подтвердите присутствие до 10 июня",
   eventDate: "2026-07-18",
-  startTime: "16:00",
-  eventFormat: "Церемония и ужин на закате",
-  venueName: "Сады Вереска",
-  venueAddress: "Москва, ул. Цветочная, 12",
-  mapUrl: "https://maps.app.goo.gl/your-map-link",
-  rsvpUrl: "https://forms.gle/your-rsvp-link",
+  startTime: "15:00",
+  eventFormat: "Сбор гостей, церемония и банкет",
+  venueName: "МегаДача",
+  venueAddress: "",
+  mapUrl: "https://go.2gis.com/7xxva",
+  venueLinks: {
+    twoGis: "https://go.2gis.com/7xxva",
+    yandex: "https://yandex.kz/maps/ru/-/CPQgvFL-",
+    instagram: "https://www.instagram.com/megadacha.kz/",
+    instagramLabel: "megadacha.kz",
+  },
+  venuePhoto: cloudVenuePhoto,
+  rsvpUrl: "#rsvp",
   dresscodeText:
-    "Нежные пастельные оттенки, светлые костюмы и легкие платья. Просим избегать чисто белого цвета.",
-  dresscodePalette: ["#f7dce5", "#f2e9f5", "#e9f2f2", "#f5efe6", "#dbe2f4"],
+    "Мы с любовью продумываем детали праздника и будем рады, если вы поддержите его цветовую гамму и общий стиль в своих образах. По возможности просим девушек избегать белых и черных цветов.",
+  dresscodePalette: ["#c39da5", "#d9d6ad", "#c6b195", "#8b7b66", "#838957"],
+  dresscodeExamples:
+    cloudMobile.length > 0
+      ? cloudMobile.slice(0, 8)
+      : [
+          { url: mb01, alt: "Референс образа 1" },
+          { url: mb02, alt: "Референс образа 2" },
+          { url: mb03, alt: "Референс образа 3" },
+          { url: mb04, alt: "Референс образа 4" },
+          { url: mb05, alt: "Референс образа 5" },
+          { url: mb06, alt: "Референс образа 6" },
+        ],
   schedule: [
     {
-      time: "16:00",
+      time: "15:00",
       title: "Сбор гостей",
-      description: "Легкий welcome и приветственные напитки",
+      description: "И праздничный фуршет",
     },
     {
-      time: "16:30",
+      time: "16:00",
       title: "Церемония",
-      description: "Трогательные слова и обмен клятвами",
     },
     {
-      time: "17:15",
-      title: "Фотосессия",
-      description: "Общие фотографии и прогулка по саду",
-    },
-    {
-      time: "18:00",
-      title: "Ужин и программа",
-      description: "Теплая атмосфера, музыка и танцы",
+      time: "17:00",
+      title: "Банкет",
+      description: "Время танцев, поздравления и вкусной еды",
     },
   ],
   wishes: [
@@ -125,13 +142,45 @@ export const weddingConfig: WeddingInviteConfig = {
   ],
   contacts: [
     {
-      name: "Анна Петрова",
+      name: "Анна",
       role: "Организатор",
-      phone: "+7 900 000-00-00",
-      whatsappUrl: "https://wa.me/79000000000",
-      telegramUrl: "https://t.me/username",
+      phone: "+7 702 240 92 24",
+      whatsappUrl: "https://wa.me/77022409224",
+      helpText:
+        "В день свадьбы или до праздника по любым вопросам можно обращаться к нашему свадебному организатору Анне.",
+      transportTitle: "Про трансфер",
+      transportText:
+        "Наш праздник будет проходить за городом. Чтобы вам было удобно добраться, мы планируем организовать трансфер для гостей без машины (и для тех, кто не захочет садиться за руль после праздника).",
     },
   ],
+  rsvpForm: {
+    title: "Пожалуйста, заполните анкету",
+    subtitle: "Если вы приглашены парой, просим заполнить анкету по отдельности.",
+    pairNotice: "Ответ займет около одной минуты.",
+    nameLabel: "Имя и фамилия",
+    attendanceQuestion: "Будете ли вы на свадьбе?",
+    attendanceHint: "Просим дать ответ до 10 июня.",
+    attendanceOptions: [
+      { value: "yes", label: "Конечно, да" },
+      { value: "no", label: "К сожалению, нет" },
+      { value: "later", label: "Скажу ответ чуть позже" },
+    ],
+    alcoholTitle: "Пожелания по алкоголю",
+    alcoholOptions: [
+      { value: "sparkling", label: "Игристое" },
+      { value: "white-wine", label: "Вино белое" },
+      { value: "red-wine", label: "Вино красное" },
+      { value: "beer", label: "Пиво" },
+      { value: "non-alcohol", label: "Предпочитаю безалкогольное" },
+    ],
+    transferQuestion: "Потребуется ли вам трансфер?",
+    transferOptions: [
+      { value: "yes", label: "Да" },
+      { value: "no", label: "Нет" },
+    ],
+    submitCta: "Отправить",
+    consoleToast: "Анкета отправлена (данные выведены в консоль)",
+  },
   photos: [
     {
       url: heroPhoto,
@@ -202,33 +251,43 @@ export const weddingConfig: WeddingInviteConfig = {
     hero: heroBg,
   },
   sections: {
+    countdown: "countdown",
     details: "details",
     location: "location",
     schedule: "schedule",
     dresscode: "dresscode",
     wishes: "wishes",
+    rsvp: "rsvp",
     faq: "faq",
     contacts: "contacts",
   },
   nav: [
+    { id: "countdown", label: "Отсчет" },
     { id: "details", label: "Детали" },
     { id: "location", label: "Локация" },
-    { id: "schedule", label: "Тайминг" },
     { id: "dresscode", label: "Дресс-код" },
     { id: "wishes", label: "Пожелания" },
+    { id: "rsvp", label: "Анкета" },
     { id: "faq", label: "FAQ" },
     { id: "contacts", label: "Контакты" },
   ],
   labels: {
+    countdownTitle: "До свадьбы осталось:",
+    countdownDays: "дней",
+    countdownHours: "часа",
+    countdownMinutes: "минут",
+    countdownSeconds: "секунд",
     heroBadge: "Wedding Day",
     startTimeLabel: "Начало в",
     rsvpCta: "Подтвердить присутствие",
     locationCta: "Посмотреть локацию",
-    mapCta: "Открыть карту",
+    mapCta: "Открыть в 2GIS",
+    yandexMapCta: "Открыть в Yandex",
+    instagramCta: "Instagram площадки",
     copyAddressCta: "Скопировать адрес",
     copiedToast: "Адрес скопирован",
     copyErrorToast: "Не удалось скопировать",
-    scheduleTitle: "Тайминг",
+    scheduleTitle: "Программа",
     dresscodeTitle: "Дресс-код",
     wishesTitle: "Пожелания",
     faqTitle: "Частые вопросы",
@@ -243,6 +302,9 @@ export const weddingConfig: WeddingInviteConfig = {
     navBadge: "Invite",
     menuOpen: "Меню",
     menuClose: "Закрыть",
-    writeCta: "Написать",
+    writeCta: "Написать в",
+    scheduleNote: "План нашего дня",
+    dresscodeHint: "Для вдохновения мы собрали немного картинок-примеров, листайте вправо",
+    dresscodeCarouselHint: "листайте вправо",
   },
 };

@@ -21,16 +21,16 @@ export const Accordion = ({ items }: Props) => {
         return (
           <div key={item.id} className="glass rounded-2xl">
             <button
-              className="flex w-full items-center justify-between px-5 py-4 text-left text-ivory-900"
+              className="flex w-full items-center justify-between px-5 py-4 text-left text-ivory-900 font-body"
               onClick={() => setOpenId(isOpen ? null : item.id)}
               type="button"
             >
-              <span className="font-medium">{item.title}</span>
+              <span className="type-body font-medium text-ivory-900">{item.title}</span>
               <span className="text-ivory-600">{isOpen ? "−" : "+"}</span>
             </button>
             <div
               className={cn(
-                "px-5 pb-4 text-sm text-ivory-900 transition-all",
+                "px-5 pb-4 type-body-sm text-ivory-800 transition-all",
                 isOpen ? "block" : "hidden"
               )}
             >

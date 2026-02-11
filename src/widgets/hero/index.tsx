@@ -42,7 +42,13 @@ export const Hero = () => {
     }
     const onScroll = () => {
       const threshold = window.innerHeight * 0.9;
-      setShowMobileFloatingCta(window.scrollY >= threshold);
+      const isPastHero = window.scrollY >= threshold;
+      const rsvpSection = document.getElementById(weddingConfig.sections.rsvp);
+      const rsvpRect = rsvpSection?.getBoundingClientRect();
+      const isRsvpInView = Boolean(
+        rsvpRect && rsvpRect.top <= window.innerHeight * 0.8 && rsvpRect.bottom >= 120
+      );
+      setShowMobileFloatingCta(isPastHero && !isRsvpInView);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -111,7 +117,7 @@ export const Hero = () => {
               )}
               <div
                 className={cn(
-                  "hero-write-reveal inline-flex items-center rounded-full border px-4 py-1 text-xs uppercase tracking-[0.22em] transition-colors duration-500",
+                  "hero-write-reveal type-overline inline-flex items-center rounded-full border px-4 py-1 transition-colors duration-500",
                   tone === "light"
                     ? "border-white/40 bg-black/30 text-ivory-50"
                     : "border-ivory-200/80 bg-ivory-50/80 text-ivory-900"
@@ -134,7 +140,7 @@ export const Hero = () => {
                 </a>
               </div>
               {weddingConfig.heroNote && (
-                <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
+                <p className="type-overline text-ivory-50/90 text-shadow-readability">
                   {weddingConfig.heroNote}
                 </p>
               )}
@@ -144,7 +150,7 @@ export const Hero = () => {
         {!showMobileFloatingCta && (
           <div className="md:hidden absolute inset-x-0 bottom-6 z-30 flex justify-center pointer-events-none">
             <div className="rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
+              <p className="type-overline text-ivory-50/90 text-shadow-readability text-[11px]">
                 Прокрутите вниз
               </p>
             </div>
@@ -156,7 +162,7 @@ export const Hero = () => {
           <div className="mx-auto w-full max-w-[460px] rounded-3xl border border-white/15 bg-black/45 backdrop-blur-md px-4 py-3 shadow-soft">
             <div className="flex flex-col gap-2 items-center text-center">
               {weddingConfig.heroNote && (
-                <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
+                <p className="type-overline text-ivory-50/90 text-shadow-readability">
                   {weddingConfig.heroNote}
                 </p>
               )}

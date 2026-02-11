@@ -16,12 +16,8 @@ export const Section = ({ id, title, subtitle, className, children, ...props }: 
     >
       {(title || subtitle) && (
         <div className="mb-8 md:mb-12">
-          {title && (
-            <h2 className="text-2xl md:text-3xl font-display text-ivory-900 tracking-tight">
-              {title}
-            </h2>
-          )}
-          {subtitle && <p className="mt-2 text-ivory-900 max-w-2xl">{subtitle}</p>}
+          {title && <h2 className="type-title-lg text-ivory-900">{title}</h2>}
+          {subtitle && <p className="type-body mt-2 text-ivory-800 max-w-2xl">{subtitle}</p>}
         </div>
       )}
       {children}

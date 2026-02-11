@@ -6,8 +6,14 @@ type Props = {
 };
 
 export const RsvpLink = ({ className }: Props) => {
+  const isExternal = /^https?:\/\//i.test(weddingConfig.rsvpUrl);
+
   return (
-    <a href={weddingConfig.rsvpUrl} target="_blank" rel="noreferrer">
+    <a
+      href={weddingConfig.rsvpUrl}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+    >
       <Button className={className} size="lg">
         {weddingConfig.labels.rsvpCta}
       </Button>

@@ -27,6 +27,38 @@ body {
   @apply bg-ivory-50/70 backdrop-blur-xl border border-ivory-200/70 shadow-card;
 }
 
+.type-title-xl {
+  @apply font-display text-4xl md:text-6xl tracking-tight;
+}
+
+.type-title-lg {
+  @apply font-display text-3xl md:text-4xl tracking-tight;
+}
+
+.type-title-md {
+  @apply font-display text-2xl md:text-3xl tracking-tight;
+}
+
+.type-title-sm {
+  @apply font-display text-xl md:text-2xl tracking-tight;
+}
+
+.type-overline {
+  @apply text-xs uppercase tracking-[0.18em] font-medium;
+}
+
+.type-body {
+  @apply text-base leading-relaxed;
+}
+
+.type-body-sm {
+  @apply text-sm leading-relaxed;
+}
+
+.type-button {
+  @apply font-body font-medium;
+}
+
 .text-gradient {
   @apply bg-clip-text text-transparent;
   background-image: linear-gradient(120deg, #2E2B27, #B8B2AB, #2E2B27);
@@ -73,6 +105,48 @@ body {
 
 .parallax-layer {
   will-change: transform;
+}
+
+@keyframes dresscode-marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.dresscode-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.dresscode-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: dresscode-marquee-scroll 22s linear infinite;
+  will-change: transform;
+}
+
+.dresscode-marquee:hover .dresscode-marquee-track {
+  animation-play-state: paused;
+}
+
+.dresscode-feed-tile {
+  flex: 0 0 auto;
+  height: clamp(210px, 28vw, 270px);
+  overflow: hidden;
+  background: #ede8e2;
+  border-right: 1px solid rgba(237, 232, 226, 0.75);
+}
+
+.dresscode-feed-tile-wide {
+  width: clamp(220px, 34vw, 340px);
+}
+
+.dresscode-feed-tile-narrow {
+  width: clamp(170px, 24vw, 260px);
 }
 
 @keyframes handwrite-stroke {
@@ -139,6 +213,10 @@ body {
     opacity: 1;
     clip-path: inset(0 0 0 0);
     transform: none;
+  }
+
+  .dresscode-marquee-track {
+    animation: none;
   }
 }
 

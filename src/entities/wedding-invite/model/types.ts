@@ -20,6 +20,16 @@ export type ContactItem = {
   phone?: string;
   whatsappUrl?: string;
   telegramUrl?: string;
+  helpText?: string;
+  transportTitle?: string;
+  transportText?: string;
+};
+
+export type VenueLinks = {
+  twoGis?: string;
+  yandex?: string;
+  instagram?: string;
+  instagramLabel?: string;
 };
 
 export type PhotoItem = {
@@ -49,12 +59,40 @@ export type NavItem = {
   label: string;
 };
 
+export type FormOption = {
+  value: string;
+  label: string;
+};
+
+export type RsvpFormConfig = {
+  title: string;
+  subtitle?: string;
+  pairNotice?: string;
+  nameLabel: string;
+  attendanceQuestion: string;
+  attendanceHint?: string;
+  attendanceOptions: FormOption[];
+  alcoholTitle: string;
+  alcoholOptions: FormOption[];
+  transferQuestion: string;
+  transferOptions: FormOption[];
+  submitCta: string;
+  consoleToast: string;
+};
+
 export type Labels = {
+  countdownTitle: string;
+  countdownDays: string;
+  countdownHours: string;
+  countdownMinutes: string;
+  countdownSeconds: string;
   heroBadge: string;
   startTimeLabel: string;
   rsvpCta: string;
   locationCta: string;
   mapCta: string;
+  yandexMapCta: string;
+  instagramCta: string;
   copyAddressCta: string;
   copiedToast: string;
   copyErrorToast: string;
@@ -74,14 +112,19 @@ export type Labels = {
   menuOpen: string;
   menuClose: string;
   writeCta: string;
+  scheduleNote?: string;
+  dresscodeHint?: string;
+  dresscodeCarouselHint?: string;
 };
 
 export type SectionIds = {
+  countdown: string;
   details: string;
   location: string;
   schedule: string;
   dresscode: string;
   wishes: string;
+  rsvp: string;
   faq: string;
   contacts: string;
 };
@@ -97,14 +140,18 @@ export type WeddingInviteConfig = {
   venueName: string;
   venueAddress: string;
   mapUrl: string;
+  venueLinks?: VenueLinks;
+  venuePhoto?: PhotoItem;
   rsvpUrl: string;
   dresscodeText: string;
   dresscodePalette: string[];
+  dresscodeExamples?: PhotoItem[];
   schedule: ScheduleItem[];
   wishes: WishItem[];
   faq: FaqItem[];
   contacts: ContactItem[];
   photos?: PhotoItem[];
+  rsvpForm: RsvpFormConfig;
   photoSize?: {
     width: number;
     height: number;

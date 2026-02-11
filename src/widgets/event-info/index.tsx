@@ -15,26 +15,19 @@ export const EventInfo = ({ id }: { id: string }) => {
   return (
     <Section id={id} title={weddingConfig.labels.detailsTitle}>
       <Reveal>
-        <div className="section-grid md:grid-cols-3">
+        <div className="section-grid md:grid-cols-2">
           <Card>
-            <p className="text-xs uppercase tracking-[0.2em] text-ivory-600">
-              {weddingConfig.labels.dateLabel}
-            </p>
-            <p className="mt-3 text-xl font-display text-ivory-900">{date}</p>
-            <p className="mt-2 text-sm text-ivory-900 capitalize">{weekday}</p>
+            <p className="type-overline text-ivory-600">{weddingConfig.labels.dateLabel}</p>
+            <p className="mt-3 type-title-sm text-ivory-900">{date}</p>
+            <p className="mt-2 type-body-sm text-ivory-800 capitalize">{weekday}</p>
           </Card>
-          <Card>
-            <p className="text-xs uppercase tracking-[0.2em] text-ivory-600">
-              {weddingConfig.labels.timeLabel}
-            </p>
-            <p className="mt-3 text-xl font-display text-ivory-900">{weddingConfig.startTime}</p>
-          </Card>
-          <Card>
-            <p className="text-xs uppercase tracking-[0.2em] text-ivory-600">
-              {weddingConfig.labels.formatLabel}
-            </p>
-            <p className="mt-3 text-base text-ivory-900">{weddingConfig.eventFormat}</p>
-          </Card>
+          {weddingConfig.schedule.map((item) => (
+            <Card key={`${item.time}-${item.title}`}>
+              <p className="type-title-sm text-ivory-900 tabular-nums">{item.time}</p>
+              <p className="mt-1 type-body text-ivory-900 font-medium">{item.title}</p>
+              {item.description && <p className="mt-1 type-body-sm text-ivory-700">{item.description}</p>}
+            </Card>
+          ))}
         </div>
       </Reveal>
     </Section>

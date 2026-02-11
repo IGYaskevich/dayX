@@ -6,8 +6,10 @@ type Props = {
 };
 
 export const OpenMap = ({ className }: Props) => {
+  const href = weddingConfig.venueLinks?.twoGis ?? weddingConfig.mapUrl;
+
   return (
-    <a href={weddingConfig.mapUrl} target="_blank" rel="noreferrer">
+    <a href={href} target="_blank" rel="noreferrer">
       <Button className={className} variant="secondary">
         {weddingConfig.labels.mapCta}
       </Button>
