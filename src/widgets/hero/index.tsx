@@ -12,6 +12,7 @@ import { cn } from "@/shared/lib/cn";
 
 export const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [showMobileFloatingCta, setShowMobileFloatingCta] = useState(false);
   const tone = "light";
   const date = formatDate(weddingConfig.eventDate, weddingConfig.locale, {
     day: "numeric",
@@ -33,9 +34,27 @@ export const Hero = () => {
     return () => media.removeEventListener?.("change", update);
   }, []);
 
+  useEffect(() => {
+    if (!isMobile) {
+      setShowMobileFloatingCta(false);
+      return;
+    }
+    const onScroll = () => {
+      const threshold = window.innerHeight * 0.9;
+      setShowMobileFloatingCta(window.scrollY >= threshold);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isMobile]);
+
   return (
     <section
-      className="relative min-h-[100svh] pt-10 md:pt-10 pb-12 md:pb-20 overflow-hidden"
+      className="relative min-h-[100svh] md:pt-10 pb-12 md:pb-20 overflow-hidden"
       data-tone={tone}
     >
       <motion.div
@@ -128,19 +147,30 @@ export const Hero = () => {
             </div>
           </div>
         </div>
-      </Container>
-      <div className="md:hidden fixed inset-x-0 bottom-5 z-40 px-4 pb-[env(safe-area-inset-bottom)]">
-        <div className="mx-auto w-full max-w-[460px] rounded-3xl border border-white/15 bg-black/45 backdrop-blur-md px-4 py-3 shadow-soft">
-          <div className="flex flex-col gap-2 items-center text-center">
-            {weddingConfig.heroNote && (
-              <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
-                {weddingConfig.heroNote}
+        {!showMobileFloatingCta && (
+          <div className="md:hidden absolute inset-x-0 bottom-6 z-30 flex justify-center pointer-events-none">
+            <div className="rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
+                Прокрутите вниз
               </p>
-            )}
-            <RsvpLink className="w-full" />
+            </div>
+          </div>
+        )}
+      </Container>
+      {showMobileFloatingCta && (
+        <div className="md:hidden fixed inset-x-0 bottom-5 z-40 px-4 pb-[env(safe-area-inset-bottom)]">
+          <div className="mx-auto w-full max-w-[460px] rounded-3xl border border-white/15 bg-black/45 backdrop-blur-md px-4 py-3 shadow-soft">
+            <div className="flex flex-col gap-2 items-center text-center">
+              {weddingConfig.heroNote && (
+                <p className="text-xs uppercase tracking-[0.2em] text-ivory-50/90 text-shadow-readability">
+                  {weddingConfig.heroNote}
+                </p>
+              )}
+              <RsvpLink className="w-full" />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
