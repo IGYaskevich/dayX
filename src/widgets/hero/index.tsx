@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { weddingConfig } from "@/shared/config/wedding";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
@@ -10,6 +11,7 @@ import { BackgroundCarousel } from "@/shared/ui/BackgroundCarousel";
 import { cn } from "@/shared/lib/cn";
 
 export const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const tone = "light";
   const date = formatDate(weddingConfig.eventDate, weddingConfig.locale, {
     day: "numeric",
@@ -23,14 +25,22 @@ export const Hero = () => {
     carouselConfig?.enabled && carouselConfig.images && carouselConfig.images.length > 0
   );
 
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
+
   return (
     <section
-      className="relative min-h-screen pt-10 md:pt-10 pb-12 md:pb-20 overflow-hidden"
+      className="relative min-h-[100svh] pt-10 md:pt-10 pb-12 md:pb-20 overflow-hidden"
       data-tone={tone}
     >
       <motion.div
         className="absolute inset-0 parallax-layer"
-        style={{ y: backgroundY }}
+        style={isMobile ? undefined : { y: backgroundY }}
         aria-hidden="true"
       >
         {carouselEnabled ? (
@@ -57,7 +67,7 @@ export const Hero = () => {
 
       <Container className="relative">
         <AnchorNav />
-        <div className="grid gap-10 items-start min-h-[calc(100vh-6rem)]">
+        <div className="grid gap-10 items-start min-h-[calc(100svh-6rem)]">
           <Reveal>
             <div className="space-y-6 max-w-xl md:max-w-2xl">
               <div
