@@ -10,8 +10,6 @@ import {motion, useScroll, useTransform} from "framer-motion";
 import {BackgroundCarousel} from "@/shared/ui/BackgroundCarousel";
 import {cn} from "@/shared/lib/cn";
 import {HandwriteTitle} from "@/shared/ui/HandwriteTitle";
-import playIcon from "@/shared/assets/play-button.png";
-import stopIcon from "@/shared/assets/stop.png";
 
 export const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -170,11 +168,28 @@ export const Hero = () => {
           </div>
         </div>
         {!showMobileFloatingCta && (
-          <div className="md:hidden absolute inset-x-0 bottom-6 z-30 flex justify-center pointer-events-none">
-            <div className="rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm">
-              <p className="type-overline text-ivory-50/90 text-shadow-readability text-[11px]">
-                Прокрутите вниз
-              </p>
+          <div className="md:hidden absolute inset-x-0 bottom-6 z-30 flex justify-center px-4">
+            <div className="flex items-center gap-2">
+              <div className="pointer-events-none rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm">
+                <p className="type-overline text-ivory-50/90 text-shadow-readability text-[11px]">
+                  Прокрутите вниз
+                </p>
+              </div>
+                <div  onClick={toggleMusic} className="rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm">
+                    {isMusicPlaying ? (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+                            <rect x="6" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+                            <rect x="14" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+                        </svg>
+                    ) : (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+                            <path
+                                d="M8 5.5C8 4.72 8.85 4.24 9.52 4.64L19.08 10.15C19.74 10.53 19.74 11.47 19.08 11.85L9.52 17.36C8.85 17.76 8 17.28 8 16.5V5.5Z"
+                                fill="#F6F3EF"
+                            />
+                        </svg>
+                    )}
+                </div>
             </div>
           </div>
         )}
@@ -188,15 +203,30 @@ export const Hero = () => {
                   {weddingConfig.heroNote}
                 </p>
               )}
-              <div className="flex w-full items-center gap-2">
-                <RsvpLink className="w-full" />
-                    <img
-                        onClick={toggleMusic}
-                        src={isMusicPlaying ? stopIcon : playIcon}
-                        alt=""
-                        aria-hidden="true"
-                        className="h-10 object-contain z-40"
-                    />
+              <div className="flex w-full items-stretch gap-2">
+                <RsvpLink fullWidth className="h-12 text-[clamp(0.95rem,4vw,1.15rem)] px-4" />
+                <Button
+                  type="button"
+                  variant="primary"
+                  onClick={toggleMusic}
+                  aria-label={isMusicPlaying ? "Пауза музыки" : "Воспроизвести музыку"}
+                  title={isMusicPlaying ? "Пауза музыки" : "Воспроизвести музыку"}
+                  className="h-12 w-14 min-w-14 shrink-0 rounded-full p-0"
+                >
+                  {isMusicPlaying ? (
+                    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+                      <rect x="6" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+                      <rect x="14" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+                      <path
+                        d="M8 5.5C8 4.72 8.85 4.24 9.52 4.64L19.08 10.15C19.74 10.53 19.74 11.47 19.08 11.85L9.52 17.36C8.85 17.76 8 17.28 8 16.5V5.5Z"
+                        fill="#F6F3EF"
+                      />
+                    </svg>
+                  )}
+                </Button>
               </div>
             </div>
           </div>

@@ -262,8 +262,8 @@ export const weddingConfig: WeddingInviteConfig = {
     contacts: "contacts",
   },
   nav: [
-    { id: "countdown", label: "Отсчет" },
-    { id: "details", label: "Детали" },
+      { id: "details", label: "Детали" },
+      { id: "countdown", label: "Отсчет" },
     { id: "location", label: "Локация" },
     { id: "dresscode", label: "Дресс-код" },
     { id: "wishes", label: "Пожелания" },

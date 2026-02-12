@@ -1,8 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 import trackSrc from "@/shared/assets/The Goo Goo Dolls – Iris (Sefon.me).mp3";
 import {Button} from "@/shared/ui/Button";
-import playIcon from "@/shared/assets/play-button.png";
-import stopIcon from "@/shared/assets/stop.png";
 
 const emitAudioState = (isPlaying: boolean, autoplayBlocked: boolean) => {
   window.dispatchEvent(
@@ -156,16 +154,23 @@ export const BackgroundAudio = () => {
         <Button
           type="button"
           size="md"
-          variant={isPlaying ? "primary" : "secondary"}
+          variant="primary"
           onClick={() => void togglePlayback()}
           className="shadow-card"
         >
-          <img
-            src={isPlaying ? stopIcon : playIcon}
-            alt=""
-            aria-hidden="true"
-            className="h-4 w-4 object-contain"
-          />
+          {isPlaying ? (
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
+              <rect x="6" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+              <rect x="14" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
+              <path
+                d="M8 5.5C8 4.72 8.85 4.24 9.52 4.64L19.08 10.15C19.74 10.53 19.74 11.47 19.08 11.85L9.52 17.36C8.85 17.76 8 17.28 8 16.5V5.5Z"
+                fill="#F6F3EF"
+              />
+            </svg>
+          )}
           {isPlaying ? "Остановить музыку" : autoplayBlocked ? "Включить музыку" : "Включить музыку"}
         </Button>
       </div>

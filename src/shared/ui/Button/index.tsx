@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes } from "react";
-import { cn } from "@/shared/lib/cn";
+import type {ButtonHTMLAttributes} from "react";
+import {cn} from "@/shared/lib/cn";
 
 type Variant = "primary" | "secondary" | "ghost";
 
@@ -7,7 +7,7 @@ type Size = "md" | "lg";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
-  size?: Size;
+  size?: Size | string;
 };
 
 const base =
@@ -32,9 +32,11 @@ export const Button = ({
   size = "md",
   ...props
 }: Props) => {
+  const sizeClass = size in sizes ? sizes[size as Size] : size;
+
   return (
     <button
-      className={cn(base, variants[variant], sizes[size], className)}
+      className={cn(base, variants[variant], sizeClass, className)}
       {...props}
     />
   );
