@@ -179,7 +179,10 @@ export const weddingConfig: WeddingInviteConfig = {
       { value: "no", label: "Нет" },
     ],
     submitCta: "Отправить",
-    consoleToast: "Анкета отправлена (данные выведены в консоль)",
+    consoleToast: "Анкета отправлена",
+    submitSuccessToast: "Спасибо! Анкета отправлена.",
+    submitErrorToast: "Не удалось отправить анкету. Попробуйте ещё раз.",
+    submitConfigErrorToast: "Форма пока не настроена. Сообщите нам в WhatsApp.",
   },
   photos: [
     {

@@ -78,6 +78,9 @@ export type RsvpFormConfig = {
   transferOptions: FormOption[];
   submitCta: string;
   consoleToast: string;
+  submitSuccessToast?: string;
+  submitErrorToast?: string;
+  submitConfigErrorToast?: string;
 };
 
 export type Labels = {

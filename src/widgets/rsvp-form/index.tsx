@@ -5,7 +5,7 @@ import { Card } from "@/shared/ui/Card";
 import { Button } from "@/shared/ui/Button";
 import { Reveal } from "@/shared/ui/Reveal";
 import { useToast } from "@/shared/ui/Toast";
-import { logRsvpToConsole } from "@/features/rsvp-submit";
+import { logRsvpToConsole, sendRsvpViaEmailJs } from "@/features/rsvp-submit";
 
 export const RsvpFormSection = ({ id }: { id: string }) => {
   const { show } = useToast();
@@ -15,6 +15,7 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
   const [attendance, setAttendance] = useState("");
   const [transfer, setTransfer] = useState("");
   const [alcoholValues, setAlcoholValues] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const alcoholLabelMap = useMemo(
     () =>
@@ -28,8 +29,9 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
     );
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isSubmitting) return;
 
     const attendanceLabel =
       formConfig.attendanceOptions.find((option) => option.value === attendance)?.label ??
@@ -38,15 +40,38 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
       formConfig.transferOptions.find((option) => option.value === transfer)?.label ?? transfer;
     const alcoholLabels = alcoholValues.map((value) => alcoholLabelMap.get(value) ?? value);
 
-    logRsvpToConsole({
+    const payload = {
       fullName: fullName.trim(),
       attendance: attendanceLabel,
       alcoholPreferences: alcoholLabels,
       transfer: transferLabel,
       submittedAt: new Date().toISOString(),
-    });
+    };
 
-    show(formConfig.consoleToast);
+    logRsvpToConsole(payload);
+    setIsSubmitting(true);
+
+    const submitResult = await sendRsvpViaEmailJs(payload);
+    setIsSubmitting(false);
+
+    if (submitResult.ok) {
+      show(formConfig.submitSuccessToast ?? formConfig.consoleToast);
+      setFullName("");
+      setAttendance("");
+      setTransfer("");
+      setAlcoholValues([]);
+      return;
+    }
+
+    if (submitResult.reason === "config_missing") {
+      show(
+        formConfig.submitConfigErrorToast ??
+          "EmailJS не настроен: добавьте template/public key в .env.local"
+      );
+      return;
+    }
+
+    show(formConfig.submitErrorToast ?? "Не удалось отправить анкету. Попробуйте ещё раз.");
   };
 
   return (
@@ -147,8 +172,13 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
               </div>
             </div>
 
-            <Button type="submit" size="lg" className="w-full md:w-auto md:px-12">
-              {formConfig.submitCta}
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full md:w-auto md:px-12"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Отправка..." : formConfig.submitCta}
             </Button>
           </form>
         </Card>
