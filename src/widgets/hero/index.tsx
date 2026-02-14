@@ -130,7 +130,9 @@ export const Hero = () => {
               <p
                 className={cn(
                   "hero-write-reveal text-2xl md:text-3xl font-display transition-colors duration-500",
-                  tone === "light" ? "date-outline-light" : "date-outline",
+                  tone === "light"
+                    ? "text-ivory-50 text-shadow-readability"
+                    : "text-ivory-900 text-shadow-soft",
                 )}
               >
                 {date}

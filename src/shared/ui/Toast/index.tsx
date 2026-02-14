@@ -11,10 +11,11 @@ import { cn } from "@/shared/lib/cn";
 export type ToastMessage = {
   id: string;
   title: string;
+  kind?: "success" | "error" | "info";
 };
 
 type ToastContextValue = {
-  show: (title: string) => void;
+  show: (title: string, kind?: "success" | "error" | "info") => void;
 };
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -30,13 +31,16 @@ export const useToast = () => {
 export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 
-  const show = useCallback((title: string) => {
-    const id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    setMessages((prev) => [...prev, { id, title }]);
-    window.setTimeout(() => {
-      setMessages((prev) => prev.filter((item) => item.id !== id));
-    }, 2400);
-  }, []);
+  const show = useCallback(
+    (title: string, kind: "success" | "error" | "info" = "info") => {
+      const id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      setMessages((prev) => [...prev, { id, title, kind }]);
+      window.setTimeout(() => {
+        setMessages((prev) => prev.filter((item) => item.id !== id));
+      }, 2400);
+    },
+    [],
+  );
 
   const value = useMemo(() => ({ show }), [show]);
 
@@ -48,7 +52,13 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
           <div
             key={message.id}
             className={cn(
-              "glass rounded-2xl px-4 py-3 type-body-sm text-ivory-900 shadow-soft animate-fadeUp border border-ivory-200/70",
+              "rounded-2xl px-4 py-3 type-body-sm shadow-soft animate-fadeUp border",
+              message.kind === "success" &&
+                "border-emerald-300 bg-emerald-50/95 text-emerald-900",
+              message.kind === "error" &&
+                "border-rose-300 bg-rose-50/95 text-rose-900",
+              (!message.kind || message.kind === "info") &&
+                "glass text-ivory-900 border-ivory-200/70",
             )}
           >
             {message.title}

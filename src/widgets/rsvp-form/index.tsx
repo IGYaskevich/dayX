@@ -62,7 +62,9 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
     setIsSubmitting(false);
 
     if (submitResult.ok) {
-      show(formConfig.submitSuccessToast ?? formConfig.consoleToast);
+      const successText =
+        formConfig.submitSuccessToast ?? formConfig.consoleToast;
+      show(successText, "success");
       setFullName("");
       setAttendance("");
       setTransfer("");
@@ -71,17 +73,17 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
     }
 
     if (submitResult.reason === "config_missing") {
-      show(
+      const errorText =
         formConfig.submitConfigErrorToast ??
-          "EmailJS не настроен: добавьте template/public key в .env.local",
-      );
+        "EmailJS не настроен: добавьте template/public key в .env.local";
+      show(errorText, "error");
       return;
     }
 
-    show(
+    const errorText =
       formConfig.submitErrorToast ??
-        "Не удалось отправить анкету. Попробуйте ещё раз.",
-    );
+      "Не удалось отправить анкету. Попробуйте ещё раз.";
+    show(errorText, "error");
   };
 
   return (

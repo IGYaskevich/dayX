@@ -72,20 +72,6 @@ body {
   text-shadow: 0 8px 24px rgba(46, 43, 39, 0.35);
 }
 
-.date-outline {
-  @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(120deg, #2e2b27, #b8b2ab, #2e2b27);
-  -webkit-text-stroke: 1px rgba(184, 178, 171, 0.55);
-  text-shadow: 0 8px 24px rgba(46, 43, 39, 0.22);
-}
-
-.date-outline-light {
-  @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(120deg, #ffffff, #e7e1da, #ffffff);
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
-}
-
 .animated-gradient {
   background: linear-gradient(
     120deg,
