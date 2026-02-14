@@ -1,15 +1,15 @@
-import {useEffect, useState} from "react";
-import {weddingConfig} from "@/shared/config/wedding";
-import {Container} from "@/shared/ui/Container";
-import {Button} from "@/shared/ui/Button";
-import {RsvpLink} from "@/features/rsvp-link";
-import {AnchorNav} from "@/features/anchor-nav";
-import {formatDate} from "@/shared/lib/date";
-import {Reveal} from "@/shared/ui/Reveal";
-import {motion, useScroll, useTransform} from "framer-motion";
-import {BackgroundCarousel} from "@/shared/ui/BackgroundCarousel";
-import {cn} from "@/shared/lib/cn";
-import {HandwriteTitle} from "@/shared/ui/HandwriteTitle";
+import { useEffect, useState } from "react";
+import { weddingConfig } from "@/shared/config/wedding";
+import { Container } from "@/shared/ui/Container";
+import { Button } from "@/shared/ui/Button";
+import { RsvpLink } from "@/features/rsvp-link";
+import { AnchorNav } from "@/features/anchor-nav";
+import { formatDate } from "@/shared/lib/date";
+import { Reveal } from "@/shared/ui/Reveal";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { BackgroundCarousel } from "@/shared/ui/BackgroundCarousel";
+import { cn } from "@/shared/lib/cn";
+import { HandwriteTitle } from "@/shared/ui/HandwriteTitle";
 
 export const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -25,7 +25,9 @@ export const Hero = () => {
   const backgroundY = useTransform(scrollY, [0, 400], [0, 120]);
   const carouselConfig = weddingConfig.backgroundCarousel;
   const carouselEnabled = Boolean(
-    carouselConfig?.enabled && carouselConfig.images && carouselConfig.images.length > 0
+    carouselConfig?.enabled &&
+    carouselConfig.images &&
+    carouselConfig.images.length > 0,
   );
 
   useEffect(() => {
@@ -47,7 +49,9 @@ export const Hero = () => {
       const rsvpSection = document.getElementById(weddingConfig.sections.rsvp);
       const rsvpRect = rsvpSection?.getBoundingClientRect();
       const isRsvpInView = Boolean(
-        rsvpRect && rsvpRect.top <= window.innerHeight * 0.8 && rsvpRect.bottom >= 120
+        rsvpRect &&
+        rsvpRect.top <= window.innerHeight * 0.8 &&
+        rsvpRect.bottom >= 120,
       );
       setShowMobileFloatingCta(isPastHero && !isRsvpInView);
     };
@@ -67,11 +71,17 @@ export const Hero = () => {
       setIsMusicPlaying(Boolean(detail.isPlaying));
     };
 
-    window.addEventListener("wedding-audio-state", onAudioState as EventListener);
+    window.addEventListener(
+      "wedding-audio-state",
+      onAudioState as EventListener,
+    );
     window.dispatchEvent(new CustomEvent("wedding-audio-request-state"));
 
     return () => {
-      window.removeEventListener("wedding-audio-state", onAudioState as EventListener);
+      window.removeEventListener(
+        "wedding-audio-state",
+        onAudioState as EventListener,
+      );
     };
   }, []);
 
@@ -120,7 +130,7 @@ export const Hero = () => {
               <p
                 className={cn(
                   "hero-write-reveal text-2xl md:text-3xl font-display transition-colors duration-500",
-                  tone === "light" ? "date-outline-light" : "date-outline"
+                  tone === "light" ? "date-outline-light" : "date-outline",
                 )}
               >
                 {date}
@@ -129,7 +139,7 @@ export const Hero = () => {
                 <p
                   className={cn(
                     "hero-write-reveal font-display text-xl md:text-2xl max-w-xxl leading-snug text-shadow-readability transition-colors duration-500",
-                    tone === "light" ? "text-ivory-50" : "text-ivory-900"
+                    tone === "light" ? "text-ivory-50" : "text-ivory-900",
                   )}
                 >
                   {weddingConfig.heroSubtitle}
@@ -140,7 +150,7 @@ export const Hero = () => {
                   "hero-write-reveal type-overline inline-flex items-center rounded-full border px-4 py-1 transition-colors duration-500",
                   tone === "light"
                     ? "border-white/40 bg-black/30 text-ivory-50"
-                    : "border-ivory-200/80 bg-ivory-50/80 text-ivory-900"
+                    : "border-ivory-200/80 bg-ivory-50/80 text-ivory-900",
                 )}
               >
                 {weddingConfig.labels.heroBadge}
@@ -175,21 +185,46 @@ export const Hero = () => {
                   Прокрутите вниз
                 </p>
               </div>
-                <div  onClick={toggleMusic} className="rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm">
-                    {isMusicPlaying ? (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
-                            <rect x="6" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
-                            <rect x="14" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
-                        </svg>
-                    ) : (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
-                            <path
-                                d="M8 5.5C8 4.72 8.85 4.24 9.52 4.64L19.08 10.15C19.74 10.53 19.74 11.47 19.08 11.85L9.52 17.36C8.85 17.76 8 17.28 8 16.5V5.5Z"
-                                fill="#F6F3EF"
-                            />
-                        </svg>
-                    )}
-                </div>
+              <div
+                onClick={toggleMusic}
+                className="rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm"
+              >
+                {isMusicPlaying ? (
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
+                  >
+                    <rect
+                      x="6"
+                      y="5"
+                      width="4"
+                      height="14"
+                      rx="1"
+                      fill="#F6F3EF"
+                    />
+                    <rect
+                      x="14"
+                      y="5"
+                      width="4"
+                      height="14"
+                      rx="1"
+                      fill="#F6F3EF"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
+                  >
+                    <path
+                      d="M8 5.5C8 4.72 8.85 4.24 9.52 4.64L19.08 10.15C19.74 10.53 19.74 11.47 19.08 11.85L9.52 17.36C8.85 17.76 8 17.28 8 16.5V5.5Z"
+                      fill="#F6F3EF"
+                    />
+                  </svg>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -204,22 +239,51 @@ export const Hero = () => {
                 </p>
               )}
               <div className="flex w-full items-stretch gap-2">
-                <RsvpLink fullWidth className="h-12 text-[clamp(0.95rem,4vw,1.15rem)] px-4" />
+                <RsvpLink
+                  fullWidth
+                  className="h-12 text-[clamp(0.95rem,4vw,1.15rem)] px-4"
+                />
                 <Button
                   type="button"
                   variant="primary"
                   onClick={toggleMusic}
-                  aria-label={isMusicPlaying ? "Пауза музыки" : "Воспроизвести музыку"}
-                  title={isMusicPlaying ? "Пауза музыки" : "Воспроизвести музыку"}
+                  aria-label={
+                    isMusicPlaying ? "Пауза музыки" : "Воспроизвести музыку"
+                  }
+                  title={
+                    isMusicPlaying ? "Пауза музыки" : "Воспроизвести музыку"
+                  }
                   className="h-12 w-14 min-w-14 shrink-0 rounded-full p-0"
                 >
                   {isMusicPlaying ? (
-                    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
-                      <rect x="6" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
-                      <rect x="14" y="5" width="4" height="14" rx="1" fill="#F6F3EF" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className="h-8 w-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
+                    >
+                      <rect
+                        x="6"
+                        y="5"
+                        width="4"
+                        height="14"
+                        rx="1"
+                        fill="#F6F3EF"
+                      />
+                      <rect
+                        x="14"
+                        y="5"
+                        width="4"
+                        height="14"
+                        rx="1"
+                        fill="#F6F3EF"
+                      />
                     </svg>
                   ) : (
-                    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className="h-8 w-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
+                    >
                       <path
                         d="M8 5.5C8 4.72 8.85 4.24 9.52 4.64L19.08 10.15C19.74 10.53 19.74 11.47 19.08 11.85L9.52 17.36C8.85 17.76 8 17.28 8 16.5V5.5Z"
                         fill="#F6F3EF"

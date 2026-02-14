@@ -7,7 +7,10 @@ import { Card } from "@/shared/ui/Card";
 const formatPart = (value: number) => String(value).padStart(2, "0");
 
 export const CountdownSection = ({ id }: { id: string }) => {
-  const countdown = useCountdown(weddingConfig.eventDate, weddingConfig.startTime);
+  const countdown = useCountdown(
+    weddingConfig.eventDate,
+    weddingConfig.startTime,
+  );
 
   const items = [
     { value: countdown.days, label: weddingConfig.labels.countdownDays },

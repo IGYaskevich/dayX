@@ -21,7 +21,8 @@ export const ScheduleSection = ({ id }: { id: string }) => {
                 className="rounded-2xl border border-ivory-200/80 bg-ivory-50/60 px-5 py-5 md:px-6 md:py-6"
               >
                 <p className="type-title-md leading-tight text-ivory-900">
-                  <span className="tabular-nums">{item.time}</span> - {item.title}
+                  <span className="tabular-nums">{item.time}</span> -{" "}
+                  {item.title}
                 </p>
                 {item.description && (
                   <p className="mt-2 type-body text-ivory-700">

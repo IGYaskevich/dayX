@@ -43,7 +43,8 @@ module.exports = {
         card: "0 18px 50px -30px rgba(80, 40, 70, 0.35)",
       },
       backgroundImage: {
-        "hero-glow": "radial-gradient(60% 60% at 20% 10%, rgba(246, 243, 239, 0.75), transparent 70%), radial-gradient(50% 50% at 85% 20%, rgba(184, 178, 171, 0.25), transparent 70%), linear-gradient(180deg, #F6F3EF 0%, #E7E1DA 48%, #F6F3EF 100%)",
+        "hero-glow":
+          "radial-gradient(60% 60% at 20% 10%, rgba(246, 243, 239, 0.75), transparent 70%), radial-gradient(50% 50% at 85% 20%, rgba(184, 178, 171, 0.25), transparent 70%), linear-gradient(180deg, #F6F3EF 0%, #E7E1DA 48%, #F6F3EF 100%)",
       },
       keyframes: {
         float: {

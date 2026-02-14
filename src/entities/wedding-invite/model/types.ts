@@ -117,6 +117,7 @@ export type Labels = {
   writeCta: string;
   scheduleNote?: string;
   dresscodeHint?: string;
+  dresscodeHintGirls?: string;
   dresscodeCarouselHint?: string;
 };
 

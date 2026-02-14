@@ -19,13 +19,17 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
 
   const alcoholLabelMap = useMemo(
     () =>
-      new Map(formConfig.alcoholOptions.map((option) => [option.value, option.label])),
-    [formConfig.alcoholOptions]
+      new Map(
+        formConfig.alcoholOptions.map((option) => [option.value, option.label]),
+      ),
+    [formConfig.alcoholOptions],
   );
 
   const toggleAlcohol = (value: string) => {
     setAlcoholValues((prev) =>
-      prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value],
     );
   };
 
@@ -34,11 +38,14 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
     if (isSubmitting) return;
 
     const attendanceLabel =
-      formConfig.attendanceOptions.find((option) => option.value === attendance)?.label ??
-      attendance;
+      formConfig.attendanceOptions.find((option) => option.value === attendance)
+        ?.label ?? attendance;
     const transferLabel =
-      formConfig.transferOptions.find((option) => option.value === transfer)?.label ?? transfer;
-    const alcoholLabels = alcoholValues.map((value) => alcoholLabelMap.get(value) ?? value);
+      formConfig.transferOptions.find((option) => option.value === transfer)
+        ?.label ?? transfer;
+    const alcoholLabels = alcoholValues.map(
+      (value) => alcoholLabelMap.get(value) ?? value,
+    );
 
     const payload = {
       fullName: fullName.trim(),
@@ -66,12 +73,15 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
     if (submitResult.reason === "config_missing") {
       show(
         formConfig.submitConfigErrorToast ??
-          "EmailJS не настроен: добавьте template/public key в .env.local"
+          "EmailJS не настроен: добавьте template/public key в .env.local",
       );
       return;
     }
 
-    show(formConfig.submitErrorToast ?? "Не удалось отправить анкету. Попробуйте ещё раз.");
+    show(
+      formConfig.submitErrorToast ??
+        "Не удалось отправить анкету. Попробуйте ещё раз.",
+    );
   };
 
   return (
@@ -80,11 +90,16 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
         <Card className="mx-auto w-full max-w-3xl">
           <form className="space-y-10" onSubmit={handleSubmit}>
             {formConfig.pairNotice && (
-              <p className="type-body-sm text-ivory-700">{formConfig.pairNotice}</p>
+              <p className="type-body-sm text-ivory-700">
+                {formConfig.pairNotice}
+              </p>
             )}
 
             <div className="space-y-3">
-              <label className="block type-title-sm text-ivory-900" htmlFor="guest-name">
+              <label
+                className="block type-title-sm text-ivory-900"
+                htmlFor="guest-name"
+              >
                 {formConfig.nameLabel}
               </label>
               <input
@@ -104,7 +119,9 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
                   {formConfig.attendanceQuestion}
                 </p>
                 {formConfig.attendanceHint && (
-                  <p className="mt-1 type-body-sm text-ivory-700">{formConfig.attendanceHint}</p>
+                  <p className="mt-1 type-body-sm text-ivory-700">
+                    {formConfig.attendanceHint}
+                  </p>
                 )}
               </div>
               <div className="grid gap-3">
@@ -129,7 +146,9 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
             </div>
 
             <div className="space-y-4">
-              <p className="type-title-md text-ivory-900">{formConfig.alcoholTitle}</p>
+              <p className="type-title-md text-ivory-900">
+                {formConfig.alcoholTitle}
+              </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {formConfig.alcoholOptions.map((option) => (
                   <label
@@ -150,7 +169,9 @@ export const RsvpFormSection = ({ id }: { id: string }) => {
             </div>
 
             <div className="space-y-4">
-              <p className="type-title-md text-ivory-900">{formConfig.transferQuestion}</p>
+              <p className="type-title-md text-ivory-900">
+                {formConfig.transferQuestion}
+              </p>
               <div className="grid gap-3">
                 {formConfig.transferOptions.map((option) => (
                   <label

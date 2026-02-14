@@ -8,13 +8,20 @@ type HandwriteTitleProps = {
   className?: string;
 };
 
-const getViewBoxWidth = (text: string) => Math.max(420, Math.ceil(text.length * 62));
+const getViewBoxWidth = (text: string) =>
+  Math.max(420, Math.ceil(text.length * 62));
 
-export const HandwriteTitle = ({ text, tone = "light", className }: HandwriteTitleProps) => {
+export const HandwriteTitle = ({
+  text,
+  tone = "light",
+  className,
+}: HandwriteTitleProps) => {
   const viewBoxWidth = getViewBoxWidth(text);
-  const strokeColor = tone === "light" ? "rgba(255,255,255,0.96)" : "rgba(46,43,39,0.95)";
+  const strokeColor =
+    tone === "light" ? "rgba(255,255,255,0.96)" : "rgba(46,43,39,0.95)";
   const fillColor = tone === "light" ? "#F6F3EF" : "#2E2B27";
-  const shadowColor = tone === "light" ? "rgba(0,0,0,0.42)" : "rgba(46,43,39,0.26)";
+  const shadowColor =
+    tone === "light" ? "rgba(0,0,0,0.42)" : "rgba(46,43,39,0.26)";
 
   return (
     <h1 className={cn("w-[min(92vw,44rem)] md:w-[min(90vw,56rem)]", className)}>

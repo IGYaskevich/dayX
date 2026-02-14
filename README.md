@@ -68,4 +68,5 @@
 - `src/features` — интерактивные функции
 - `src/entities` — типы и модель инвайта
 - `src/shared` — ui-kit, lib, assets, config
+
 # dayX

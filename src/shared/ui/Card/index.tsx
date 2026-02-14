@@ -8,7 +8,7 @@ export const Card = ({ className, ...props }: Props) => {
     <div
       className={cn(
         "glass rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-card border border-ivory-200/70",
-        className
+        className,
       )}
       {...props}
     />

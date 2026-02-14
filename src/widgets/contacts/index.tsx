@@ -34,7 +34,11 @@ export const ContactsSection = ({ id }: { id: string }) => {
               )}
               <div className="mt-8 flex flex-wrap gap-3">
                 {contact.whatsappUrl && (
-                  <a href={contact.whatsappUrl} target="_blank" rel="noreferrer">
+                  <a
+                    href={contact.whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <Button variant="primary">
                       {weddingConfig.labels.writeCta} WhatsApp
                     </Button>
@@ -44,7 +48,9 @@ export const ContactsSection = ({ id }: { id: string }) => {
               {(contact.transportTitle || contact.transportText) && (
                 <div className="mt-8 rounded-2xl border border-ivory-200/80 bg-ivory-50/60 px-4 py-4 md:px-5">
                   {contact.transportTitle && (
-                    <p className="type-title-sm text-ivory-900">{contact.transportTitle}</p>
+                    <p className="type-title-sm text-ivory-900">
+                      {contact.transportTitle}
+                    </p>
                   )}
                   {contact.transportText && (
                     <p className="mt-2 type-body text-ivory-800">

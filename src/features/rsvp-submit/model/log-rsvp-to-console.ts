@@ -11,10 +11,10 @@ export const logRsvpToConsole = (payload: RsvpSubmitPayload) => {
   console.groupCollapsed(`[RSVP] ${payload.fullName}`);
   console.table({
     "Имя и фамилия": payload.fullName,
-    "Присутствие": payload.attendance,
-    "Алкоголь": payload.alcoholPreferences.join(", ") || "не указано",
-    "Трансфер": payload.transfer,
-    "Отправлено": payload.submittedAt,
+    Присутствие: payload.attendance,
+    Алкоголь: payload.alcoholPreferences.join(", ") || "не указано",
+    Трансфер: payload.transfer,
+    Отправлено: payload.submittedAt,
   });
   console.log("payload", payload);
   console.groupEnd();

@@ -11,7 +11,9 @@ Contact Us: {{title}} | RSVP: {{full_name}} — {{attendance}}
 ## Content (HTML)
 
 ```html
-<div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; color: #2e2b27;">
+<div
+  style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; color: #2e2b27;"
+>
   <h2 style="margin: 0 0 16px;">Новая анкета RSVP</h2>
 
   <p style="margin: 0 0 8px;"><b>Имя и фамилия:</b> {{full_name}}</p>

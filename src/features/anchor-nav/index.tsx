@@ -23,8 +23,14 @@ export const AnchorNav = () => {
           ))}
         </div>
         <div className="md:hidden">
-          <Button variant="ghost" size="md" onClick={() => setOpen((prev) => !prev)}>
-            {open ? weddingConfig.labels.menuClose : weddingConfig.labels.menuOpen}
+          <Button
+            variant="ghost"
+            size="md"
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            {open
+              ? weddingConfig.labels.menuClose
+              : weddingConfig.labels.menuOpen}
           </Button>
         </div>
       </div>

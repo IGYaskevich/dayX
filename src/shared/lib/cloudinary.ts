@@ -18,15 +18,27 @@ export const createCloudinary = (cloudName: string) =>
 export const buildCldImages = (
   cld: Cloudinary,
   items: CloudinaryImageRef[],
-  size: Size
+  size: Size,
 ) => {
   return items.map((item) => ({
     url: cld
       .image(item.id)
       .format("auto")
       .quality("auto")
-      .resize(fill().gravity(autoGravity()).width(size.width).height(size.height))
+      .resize(
+        fill().gravity(autoGravity()).width(size.width).height(size.height),
+      )
       .toURL(),
+    alt: item.alt,
+  }));
+};
+
+export const buildCldImagesNoCrop = (
+  cld: Cloudinary,
+  items: CloudinaryImageRef[],
+) => {
+  return items.map((item) => ({
+    url: cld.image(item.id).format("auto").quality("auto").toURL(),
     alt: item.alt,
   }));
 };

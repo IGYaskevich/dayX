@@ -17,15 +17,27 @@ export const EventInfo = ({ id }: { id: string }) => {
       <Reveal>
         <div className="section-grid md:grid-cols-2">
           <Card>
-            <p className="type-overline text-ivory-600">{weddingConfig.labels.dateLabel}</p>
+            <p className="type-overline text-ivory-600">
+              {weddingConfig.labels.dateLabel}
+            </p>
             <p className="mt-3 type-title-sm text-ivory-900">{date}</p>
-            <p className="mt-2 type-body-sm text-ivory-800 capitalize">{weekday}</p>
+            <p className="mt-2 type-body-sm text-ivory-800 capitalize">
+              {weekday}
+            </p>
           </Card>
           {weddingConfig.schedule.map((item) => (
             <Card key={`${item.time}-${item.title}`}>
-              <p className="type-title-sm text-ivory-900 tabular-nums">{item.time}</p>
-              <p className="mt-1 type-body text-ivory-900 font-medium">{item.title}</p>
-              {item.description && <p className="mt-1 type-body-sm text-ivory-700">{item.description}</p>}
+              <p className="type-title-sm text-ivory-900 tabular-nums">
+                {item.time}
+              </p>
+              <p className="mt-1 type-body text-ivory-900 font-medium">
+                {item.title}
+              </p>
+              {item.description && (
+                <p className="mt-1 type-body-sm text-ivory-700">
+                  {item.description}
+                </p>
+              )}
             </Card>
           ))}
         </div>

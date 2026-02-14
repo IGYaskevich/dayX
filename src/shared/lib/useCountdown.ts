@@ -29,7 +29,9 @@ export const useCountdown = (isoDate: string, startTime?: string) => {
     return new Date(`${isoDate}T00:00:00`);
   }, [isoDate, startTime]);
 
-  const [state, setState] = useState<CountdownState>(() => getCountdownState(target));
+  const [state, setState] = useState<CountdownState>(() =>
+    getCountdownState(target),
+  );
 
   useEffect(() => {
     const tick = () => setState(getCountdownState(target));

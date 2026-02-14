@@ -25,13 +25,15 @@ export const Accordion = ({ items }: Props) => {
               onClick={() => setOpenId(isOpen ? null : item.id)}
               type="button"
             >
-              <span className="type-body font-medium text-ivory-900">{item.title}</span>
+              <span className="type-body font-medium text-ivory-900">
+                {item.title}
+              </span>
               <span className="text-ivory-600">{isOpen ? "−" : "+"}</span>
             </button>
             <div
               className={cn(
                 "px-5 pb-4 type-body-sm text-ivory-800 transition-all",
-                isOpen ? "block" : "hidden"
+                isOpen ? "block" : "hidden",
               )}
             >
               {item.content}

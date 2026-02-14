@@ -30,7 +30,7 @@ export const BackgroundCarousel = ({
   const safeImages = useMemo(() => images.filter((item) => item.url), [images]);
   const safeMobileImages = useMemo(
     () => (mobileImages ?? []).filter((item) => item.url),
-    [mobileImages]
+    [mobileImages],
   );
   const activeImages =
     isMobile && safeMobileImages.length > 0 ? safeMobileImages : safeImages;
@@ -66,8 +66,14 @@ export const BackgroundCarousel = ({
       });
     };
 
-    const idle = (globalThis as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number })
-      .requestIdleCallback;
+    const idle = (
+      globalThis as {
+        requestIdleCallback?: (
+          cb: () => void,
+          opts?: { timeout: number },
+        ) => number;
+      }
+    ).requestIdleCallback;
     if (typeof idle === "function") {
       idle(preload, { timeout: 1500 });
     } else {

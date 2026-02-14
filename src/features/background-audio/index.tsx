@@ -1,12 +1,12 @@
-import {useCallback, useEffect, useRef, useState} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import trackSrc from "@/shared/assets/The Goo Goo Dolls – Iris (Sefon.me).mp3";
-import {Button} from "@/shared/ui/Button";
+import { Button } from "@/shared/ui/Button";
 
 const emitAudioState = (isPlaying: boolean, autoplayBlocked: boolean) => {
   window.dispatchEvent(
     new CustomEvent("wedding-audio-state", {
       detail: { isPlaying, autoplayBlocked },
-    })
+    }),
   );
 };
 
@@ -33,23 +33,20 @@ export const BackgroundAudio = () => {
     unlockCleanupRef.current = null;
   }, []);
 
-  const tryPlay = useCallback(
-    async () => {
-      const audio = audioRef.current;
-      if (!audio) return false;
+  const tryPlay = useCallback(async () => {
+    const audio = audioRef.current;
+    if (!audio) return false;
 
-      try {
-        await audio.play();
-        syncAudioState(true, false);
-        clearUnlockListeners();
-        return true;
-      } catch {
-        syncAudioState(false, true);
-        return false;
-      }
-    },
-    [clearUnlockListeners, syncAudioState]
-  );
+    try {
+      await audio.play();
+      syncAudioState(true, false);
+      clearUnlockListeners();
+      return true;
+    } catch {
+      syncAudioState(false, true);
+      return false;
+    }
+  }, [clearUnlockListeners, syncAudioState]);
 
   const attachUnlockListeners = useCallback(() => {
     if (unlockCleanupRef.current) return;
@@ -59,7 +56,12 @@ export const BackgroundAudio = () => {
       void tryPlay();
     };
 
-    const events: Array<keyof WindowEventMap> = ["pointerdown", "touchstart", "keydown", "click"];
+    const events: Array<keyof WindowEventMap> = [
+      "pointerdown",
+      "touchstart",
+      "keydown",
+      "click",
+    ];
     for (const eventName of events) {
       window.addEventListener(eventName, onUserGesture, { passive: true });
     }
@@ -125,7 +127,10 @@ export const BackgroundAudio = () => {
     audio.addEventListener("pause", onPause);
     window.addEventListener("wedding-audio-toggle", onToggle as EventListener);
     window.addEventListener("wedding-audio-start", onStart as EventListener);
-    window.addEventListener("wedding-audio-request-state", onRequestState as EventListener);
+    window.addEventListener(
+      "wedding-audio-request-state",
+      onRequestState as EventListener,
+    );
 
     const initPlayback = () => {
       musicEnabledRef.current = true;
@@ -141,9 +146,18 @@ export const BackgroundAudio = () => {
       audio.pause();
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
-      window.removeEventListener("wedding-audio-toggle", onToggle as EventListener);
-      window.removeEventListener("wedding-audio-start", onStart as EventListener);
-      window.removeEventListener("wedding-audio-request-state", onRequestState as EventListener);
+      window.removeEventListener(
+        "wedding-audio-toggle",
+        onToggle as EventListener,
+      );
+      window.removeEventListener(
+        "wedding-audio-start",
+        onStart as EventListener,
+      );
+      window.removeEventListener(
+        "wedding-audio-request-state",
+        onRequestState as EventListener,
+      );
     };
   }, [clearUnlockListeners, startPlayback, syncAudioState, togglePlayback]);
 
@@ -171,7 +185,11 @@ export const BackgroundAudio = () => {
               />
             </svg>
           )}
-          {isPlaying ? "Остановить музыку" : autoplayBlocked ? "Включить музыку" : "Включить музыку"}
+          {isPlaying
+            ? "Остановить музыку"
+            : autoplayBlocked
+              ? "Включить музыку"
+              : "Включить музыку"}
         </Button>
       </div>
     </>

@@ -27,48 +27,63 @@ import mb10 from "@/shared/assets/x-day/mobile-bg/C7B51E56-D323-42B9-AD19-3DECF3
 import mb11 from "@/shared/assets/x-day/mobile-bg/CF708314-5DAB-44A9-ADD8-D839D4C0AA5F.jpg";
 import mb12 from "@/shared/assets/x-day/mobile-bg/D4A37102-6EA7-4143-B5AB-3F58CA6C95D9.jpg";
 import mb13 from "@/shared/assets/x-day/mobile-bg/FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6.jpg";
-import { buildCldImages, createCloudinary, type CloudinaryImageRef } from "@/shared/lib/cloudinary";
+import {
+  buildCldImages,
+  buildCldImagesNoCrop,
+  type CloudinaryImageRef,
+  createCloudinary,
+} from "@/shared/lib/cloudinary";
 
 const cloudName = "dpqfojtav";
 const cld = createCloudinary(cloudName);
 
 const cloudDesktopIds: CloudinaryImageRef[] = [
-    { id: "D4A37102-6EA7-4143-B5AB-3F58CA6C95D9_ryog6l", alt: "Фон — момент 1" },
-    { id: "FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6_pj5niy", alt: "Фон — момент 2" },
-    { id: "59FC10F9-F878-4C55-82C1-4FA00EF2C5F4_jwl7ua", alt: "Фон — момент 3" },
-    { id: "CF708314-5DAB-44A9-ADD8-D839D4C0AA5F_rjvuvt", alt: "Фон — момент 4" },
-    { id: "4D21A63C-0169-42FE-8BA2-ED7BDEA07D72_c2trlo", alt: "Фон — момент 5" },
-    { id: "B2642C96-62C5-4BEB-8A57-52117AF94F4C_hohtzf", alt: "Фон — момент 6" },
-    { id: "420B36A1-B09D-4CD3-BBD2-2B030252CBA6_mqp5w2", alt: "Фон — момент 7" },
-    { id: "6344CD1D-E147-494E-9554-96AE6B648755_gpmhei", alt: "Фон — момент 8" },
-    { id: "236BBACD-0906-4321-B3FE-A884648211CE_cwx19a", alt: "Фон — момент 9" },
-    { id: "234D8749-34E8-4570-90B2-DE5909CE94E0_e9cdxn", alt: "Фон — момент 10" },
-    { id: "C62025A2-308E-457B-B09C-00EF6F7ECC57_rbf2rh", alt: "Фон — момент 11" },
-    { id: "C7B51E56-D323-42B9-AD19-3DECF3A7F0A2_oiumaw", alt: "Фон — момент 12" },
-
+  { id: "D4A37102-6EA7-4143-B5AB-3F58CA6C95D9_ryog6l", alt: "Фон — момент 1" },
+  { id: "FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6_pj5niy", alt: "Фон — момент 2" },
+  { id: "59FC10F9-F878-4C55-82C1-4FA00EF2C5F4_jwl7ua", alt: "Фон — момент 3" },
+  { id: "CF708314-5DAB-44A9-ADD8-D839D4C0AA5F_rjvuvt", alt: "Фон — момент 4" },
+  { id: "4D21A63C-0169-42FE-8BA2-ED7BDEA07D72_c2trlo", alt: "Фон — момент 5" },
+  { id: "B2642C96-62C5-4BEB-8A57-52117AF94F4C_hohtzf", alt: "Фон — момент 6" },
+  { id: "420B36A1-B09D-4CD3-BBD2-2B030252CBA6_mqp5w2", alt: "Фон — момент 7" },
+  { id: "6344CD1D-E147-494E-9554-96AE6B648755_gpmhei", alt: "Фон — момент 8" },
+  { id: "236BBACD-0906-4321-B3FE-A884648211CE_cwx19a", alt: "Фон — момент 9" },
+  { id: "234D8749-34E8-4570-90B2-DE5909CE94E0_e9cdxn", alt: "Фон — момент 10" },
+  { id: "C62025A2-308E-457B-B09C-00EF6F7ECC57_rbf2rh", alt: "Фон — момент 11" },
+  { id: "C7B51E56-D323-42B9-AD19-3DECF3A7F0A2_oiumaw", alt: "Фон — момент 12" },
 ];
 
 const cloudMobileIds: CloudinaryImageRef[] = [
-    { id: "D4A37102-6EA7-4143-B5AB-3F58CA6C95D9_ea0u7p", alt: "Фон — момент 1" },
-    { id: "FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6_mjbysl", alt: "Фон — момент 2" },
-    { id: "59FC10F9-F878-4C55-82C1-4FA00EF2C5F4_gsxath", alt: "Фон — момент 3" },
-    { id: "CF708314-5DAB-44A9-ADD8-D839D4C0AA5F_mzxbkp", alt: "Фон — момент 4" },
-    { id: "4D21A63C-0169-42FE-8BA2-ED7BDEA07D72_cpg8xf", alt: "Фон — момент 5" },
-    { id: "B2642C96-62C5-4BEB-8A57-52117AF94F4C_js6nq5", alt: "Фон — момент 7" },
-    { id: "420B36A1-B09D-4CD3-BBD2-2B030252CBA6_kvbbf4", alt: "Фон — момент 8" },
-    { id: "6344CD1D-E147-494E-9554-96AE6B648755_tyyoxf", alt: "Фон — момент 9" },
-    { id: "236BBACD-0906-4321-B3FE-A884648211CE_fkthk6", alt: "Фон — момент 10" },
-    { id: "234D8749-34E8-4570-90B2-DE5909CE94E0_clfowp", alt: "Фон — момент 11" },
-    { id: "C62025A2-308E-457B-B09C-00EF6F7ECC57_rvhqdo", alt: "Фон — момент 12" },
-    { id: "C7B51E56-D323-42B9-AD19-3DECF3A7F0A2_somudo", alt: "Фон — момент 13" },
+  { id: "D4A37102-6EA7-4143-B5AB-3F58CA6C95D9_ea0u7p", alt: "Фон — момент 1" },
+  { id: "FD20DAF5-455E-43C4-BA50-93DDCFCFA4D6_mjbysl", alt: "Фон — момент 2" },
+  { id: "59FC10F9-F878-4C55-82C1-4FA00EF2C5F4_gsxath", alt: "Фон — момент 3" },
+  { id: "CF708314-5DAB-44A9-ADD8-D839D4C0AA5F_mzxbkp", alt: "Фон — момент 4" },
+  { id: "4D21A63C-0169-42FE-8BA2-ED7BDEA07D72_cpg8xf", alt: "Фон — момент 5" },
+  { id: "B2642C96-62C5-4BEB-8A57-52117AF94F4C_js6nq5", alt: "Фон — момент 7" },
+  { id: "420B36A1-B09D-4CD3-BBD2-2B030252CBA6_kvbbf4", alt: "Фон — момент 8" },
+  { id: "6344CD1D-E147-494E-9554-96AE6B648755_tyyoxf", alt: "Фон — момент 9" },
+  { id: "236BBACD-0906-4321-B3FE-A884648211CE_fkthk6", alt: "Фон — момент 10" },
+  { id: "234D8749-34E8-4570-90B2-DE5909CE94E0_clfowp", alt: "Фон — момент 11" },
+  { id: "C62025A2-308E-457B-B09C-00EF6F7ECC57_rvhqdo", alt: "Фон — момент 12" },
+  { id: "C7B51E56-D323-42B9-AD19-3DECF3A7F0A2_somudo", alt: "Фон — момент 13" },
 ];
 
-const cloudDesktop = buildCldImages(cld, cloudDesktopIds, { width: 1920, height: 1080 });
-const cloudMobile = buildCldImages(cld, cloudMobileIds, { width: 1080, height: 1620 });
+const cloudDesktop = buildCldImages(cld, cloudDesktopIds, {
+  width: 1920,
+  height: 1080,
+});
+const cloudMobile = buildCldImages(cld, cloudMobileIds, {
+  width: 1080,
+  height: 1620,
+});
+const dresscodeExampleIds: CloudinaryImageRef[] = [
+  { id: "girls_zzlbwz", alt: "Референс женского образа" },
+  { id: "man_yl1ixz", alt: "Референс мужского образа" },
+];
+const dresscodeExamples = buildCldImagesNoCrop(cld, dresscodeExampleIds);
 const cloudVenuePhoto = buildCldImages(
   cld,
   [{ id: "IMG_2668_atcncl", alt: "Локация МегаДача" }],
-  { width: 1600, height: 1200 }
+  { width: 1600, height: 1200 },
 )[0];
 
 export const weddingConfig: WeddingInviteConfig = {
@@ -92,17 +107,21 @@ export const weddingConfig: WeddingInviteConfig = {
   rsvpUrl: "#rsvp",
   dresscodeText:
     "Мы с любовью продумываем детали праздника и будем рады, если вы поддержите его цветовую гамму и общий стиль в своих образах. По возможности просим девушек избегать белых и черных цветов.",
-  dresscodePalette: ["#c39da5", "#d9d6ad", "#c6b195", "#8b7b66", "#838957"],
+  dresscodePalette: [
+    "#E9DCCB",
+    "#5A3E36",
+    "#7A7F4F",
+    "#EEDC9A",
+    "#A7B7C9",
+    "#7B3F3F",
+    "#7B9A95",
+  ],
   dresscodeExamples:
-    cloudMobile.length > 0
-      ? cloudMobile.slice(0, 8)
+    dresscodeExamples.length > 0
+      ? dresscodeExamples
       : [
           { url: mb01, alt: "Референс образа 1" },
           { url: mb02, alt: "Референс образа 2" },
-          { url: mb03, alt: "Референс образа 3" },
-          { url: mb04, alt: "Референс образа 4" },
-          { url: mb05, alt: "Референс образа 5" },
-          { url: mb06, alt: "Референс образа 6" },
         ],
   schedule: [
     {
@@ -155,7 +174,8 @@ export const weddingConfig: WeddingInviteConfig = {
   ],
   rsvpForm: {
     title: "Пожалуйста, заполните анкету",
-    subtitle: "Если вы приглашены парой, просим заполнить анкету по отдельности.",
+    subtitle:
+      "Если вы приглашены парой, просим заполнить анкету по отдельности.",
     pairNotice: "Ответ займет около одной минуты.",
     nameLabel: "Имя и фамилия",
     attendanceQuestion: "Будете ли вы на свадьбе?",
@@ -265,8 +285,8 @@ export const weddingConfig: WeddingInviteConfig = {
     contacts: "contacts",
   },
   nav: [
-      { id: "details", label: "Детали" },
-      { id: "countdown", label: "Отсчет" },
+    { id: "details", label: "Детали" },
+    { id: "countdown", label: "Отсчет" },
     { id: "location", label: "Локация" },
     { id: "dresscode", label: "Дресс-код" },
     { id: "wishes", label: "Пожелания" },
@@ -308,6 +328,8 @@ export const weddingConfig: WeddingInviteConfig = {
     writeCta: "Написать в",
     scheduleNote: "План нашего дня",
     dresscodeHint: "Для вдохновения мы собрали несколько примеров образов.",
+    dresscodeHintGirls:
+      "Девушкам лучше выбрать обувь без тонких шпилек: на траве и в горах удобнее устойчивый каблук.",
     dresscodeCarouselHint: "Референсы дресс-кода",
   },
 };

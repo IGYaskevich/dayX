@@ -1,6 +1,9 @@
 export type EmailJsSubmitResult =
   | { ok: true }
-  | { ok: false; reason: "config_missing" | "request_failed" | "network_error" };
+  | {
+      ok: false;
+      reason: "config_missing" | "request_failed" | "network_error";
+    };
 
 export type EmailJsPayload = {
   fullName: string;
@@ -16,15 +19,15 @@ const EMAILJS_ENDPOINT = "https://api.emailjs.com/api/v1.0/email/send";
 const DEFAULT_EMAIL_TITLE = "RSVP";
 
 const getEmailJsConfig = () => {
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID ;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ;
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   return { serviceId, templateId, publicKey };
 };
 
 export const sendRsvpViaEmailJs = async (
-  payload: EmailJsPayload
+  payload: EmailJsPayload,
 ): Promise<EmailJsSubmitResult> => {
   const { serviceId, templateId, publicKey } = getEmailJsConfig();
 
@@ -47,8 +50,10 @@ export const sendRsvpViaEmailJs = async (
           full_name: payload.fullName,
           fullName: payload.fullName,
           attendance: payload.attendance,
-          alcohol_preferences: payload.alcoholPreferences.join(", ") || "не указано",
-          alcoholPreferences: payload.alcoholPreferences.join(", ") || "не указано",
+          alcohol_preferences:
+            payload.alcoholPreferences.join(", ") || "не указано",
+          alcoholPreferences:
+            payload.alcoholPreferences.join(", ") || "не указано",
           transfer: payload.transfer,
           submitted_at: payload.submittedAt,
           submittedAt: payload.submittedAt,

@@ -14,7 +14,7 @@ export const useInView = <T extends HTMLElement>() => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     observer.observe(element);
     return () => observer.disconnect();
